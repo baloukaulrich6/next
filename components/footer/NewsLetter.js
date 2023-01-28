@@ -1,7 +1,7 @@
 import styles from "./styles.module.scss";
 import Link from 'next/link'
 
-export default function NexsLetter() {
+export default function NewsLetter() {
   return (
     <div className={styles.footer__newsletter}>
       <h3>SIGN UP FOR OUR NEW LETTER</h3>

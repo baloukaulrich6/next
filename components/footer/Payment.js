@@ -5,7 +5,9 @@ export default function Payment() {
     <div className={styles.footer__payment}>
         <h3>We ACCEPT</h3>
         <div className={styles.footer__flexWrap}>
-            <img src=""/>
+            <img src="../../../payment/visa.png"/>
+            <img src="../../../payment/mastercard.png"/>
+            <img src="../../../payment/orangeMoney.png"/>
         </div>
     </div>
   )

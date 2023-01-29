@@ -1,6 +1,7 @@
+import styles from "./styles.module.scss";
 import { BsInstagram, BsTwitter } from "react-icons/bs";
 import {FaFacebookF} from "react-icons/fa"
-import styles from "./styles.module.scss";
+
 
 export default function Socials() {
   return (

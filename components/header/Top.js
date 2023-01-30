@@ -2,12 +2,13 @@ import styles from "./styles.module.scss"
 import { MdSecurity } from 'react-icons/md'
 import { BsSuitHeart } from 'react-icons/bs'
 import { RiAccountPinCircleLine, RiArrowDropDownFill } from 'react-icons/ri'
+import { useSession, signIn, signOut } from "next-auth/react"
 import Link from "next/link"
 import { useState } from "react"
 import UserMenu from "./UserMenu"
 
 export default function Top({country}) {
-    const [loggedIn, setLoggedIn] = useState(true)
+    const { data: session } = useSession()
     const [visible, setVisible] = useState(false)
     return (
         <div className={styles.top}>
@@ -40,11 +41,11 @@ export default function Top({country}) {
                     <li className={styles.li}
                     onMouseOver={() => setVisible(true)}
                     onMouseLeave={() => setVisible(false)}>
-                        {loggedIn ? (
+                        {session ? (
                             <li className={styles.li}>
                                 <div className={styles.flex}>
-                                    <img src="https://w7.pngwing.com/pngs/340/946/png-transparent-avatar-user-computer-icons-software-developer-avatar-child-face-heroes-thumbnail.png" />
-                                    <span>Balouka</span>
+                                    <img src={session.user.image} />
+                                    <span>{session.user.name}</span>
                                     <RiArrowDropDownFill />
                                 </div>
                             </li>
@@ -57,7 +58,7 @@ export default function Top({country}) {
                                 </div>
                             </li>
                         )}
-                        {visible && <UserMenu LoggedIn={loggedIn}/>}
+                        {visible && <UserMenu session={session}/>}
                     </li>
                 </ul>
             </div>

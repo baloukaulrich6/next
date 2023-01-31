@@ -59,5 +59,16 @@
         form{
             margin-top: 2rem;
         }
+        .forgot{
+            color:#666;
+            padding-top: 1rem;
+            font-size: 14;
+            width: fit-content;
+            height: 40px;
+            &:hover{
+                color : $ror-color;
+                border-bottom: 1px solid $ror-color
+            }
+        }
     }
 }

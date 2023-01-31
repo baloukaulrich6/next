@@ -1,0 +1,28 @@
+.button{
+    position: relative;
+    border: none;
+    outline: none;
+    width: 220px;
+    height: 55px;
+    font-weight: 600;
+    color: black;
+    background: $ror-color;
+    display: block;
+    border-radius: 55px;
+    cursor: pointer;
+   
+    .svg__wrap{
+        width: 40px;
+        height: 40px;
+        display: grid;
+        border-radius: 50%;
+        place-items: center;
+        position: absolute;
+        top: 7.5px;
+        right: 5px;
+        background: rgb(194, 192, 192);
+        svg{
+            fill: $or-color;
+        }
+    }
+}

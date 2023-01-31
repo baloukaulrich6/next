@@ -68,7 +68,7 @@ export default function signin() {
                          onChange={handleChange}/>
                         <CircleIconBtn type='submit' text="Sign in"/>
                         <div className={styles.forgot}>
-                          <Link href="/forget">Forgot password</Link>
+                          <Link href="/forget">Forgot password ?</Link>
                         </div>
                       </Form>
                     )}

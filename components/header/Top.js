@@ -16,10 +16,7 @@ export default function Top({country}) {
                 <div></div>
                 <ul className={styles.top__list}>
                     <li className={styles.li}>
-                        <img
-                            src={country.flag}
-                            alt=""
-                        />
+                        <img src={country.flag}/>
                         <span>{country.name} / xaf</span>
                     </li>
                     <li className={styles.li}>

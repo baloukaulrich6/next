@@ -13,7 +13,7 @@ import CircleIconBtn from "../components/buttons/circleIconBtn/index"
 const initialValues = {
   login_email:"",
   login_password:"",
-  full_name:"",
+  name:"",
   email:"",
   password:"",
   confirm_password:"",
@@ -24,7 +24,7 @@ export default function signin({providers}) {
   const {
     login_email, 
     login_password,
-    full_name,
+    name,
     email,
     password,
     confirm_password,} = user
@@ -38,7 +38,7 @@ export default function signin({providers}) {
     login_password: Yup.string().required("Password")
   })
   const registerValidation = Yup.object({
-    full_name: Yup.string().required("What is your name ?")
+    name: Yup.string().required("What is your name ?")
     .min(3,"Frist name must be between 3 and 25 characters")
     .max(25,"Frist name must be between 3 and 25 characters")
     .matches(/^[a-zA-Z]/, "Number and spacial characters are not allowed"),
@@ -122,7 +122,7 @@ export default function signin({providers}) {
                    <Formik
                    enableReinitialize
                    initialValues={{
-                    full_name,
+                    name,
                     email,
                     password,
                     confirm_password,
@@ -133,7 +133,7 @@ export default function signin({providers}) {
                       <Form>
                         <LoginInput
                          type='text'
-                         name='full_name'
+                         name='name'
                          icon="user"
                          placeholder="Full name"
                          onChange={handleChange}/>

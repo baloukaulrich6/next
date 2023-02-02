@@ -3,6 +3,7 @@ import bcrypt from 'bcrypt'
 import {validateEmail} from "../../../utils/validation.js"
 import db from "../../../utils/db.js"
 import User from '../../../models/User.js'
+import {createActivationToken} from "../../../utils/token"
 const handler = nc()
 
 handler.post(async (req, res) =>{
@@ -26,8 +27,11 @@ handler.post(async (req, res) =>{
         const cryptedPassword = await bcrypt.hash(password, 12);
         const newUser = new User({name, email, password: cryptedPassword});
         const addedUser = await newUser.save();
-        res.send(addedUser);
-        console.log(addedUser);
+        const activation_token = createActivationToken({
+            id: addedUser._id.toString(),
+        })
+       const url =`${process.env.BASE_URL}/activate/${activation_token}`
+       res.send(url)
     }catch(error){
         res.status(500).json({message: error.message})
     }

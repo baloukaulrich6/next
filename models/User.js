@@ -30,20 +30,20 @@ import mongoose from 'mongoose';
         type: String,
         default: ""
     },
-    adress:[{
+    address:[{
         firstName:{
             type: String,
         },
         lastName:{
             type: String,
         },
-        phoneNumbre1:{
+        phoneNumber1:{
             type: String,
         },
-        phoneNumbre2:{
+        phoneNumber2:{
             type: String,
         },
-        adress:{
+        address:{
             type: String,
         },
         city:{

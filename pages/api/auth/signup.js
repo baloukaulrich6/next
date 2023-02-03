@@ -4,6 +4,7 @@ import {validateEmail} from "../../../utils/validation.js"
 import db from "../../../utils/db.js"
 import User from '../../../models/User.js'
 import {createActivationToken} from "../../../utils/token"
+import {sendEmail} from '../../../utils/sendEmail'
 const handler = nc()
 
 handler.post(async (req, res) =>{
@@ -31,7 +32,8 @@ handler.post(async (req, res) =>{
             id: addedUser._id.toString(),
         })
        const url =`${process.env.BASE_URL}/activate/${activation_token}`
-       res.send(url)
+       sendEmail(email, url, "", "Activate your account.")
+
     }catch(error){
         res.status(500).json({message: error.message})
     }

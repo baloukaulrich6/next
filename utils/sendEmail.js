@@ -1,16 +1,17 @@
 import nodemailer from 'nodemailer'
 import { google } from 'googleapis'
+import {activateEmailTemplate} from '../emails/activateEmailTemplate'
 
-const {OAUTH2} = google.auth;
-const OAUTH_PLAYGROUND = "https://developers.google.com/oauthplayground"
+const OAuth2 = google.auth.OAuth2
+const OAUTH_PLAYGROUND = "https://developers.google.com/oauthplayground/"
 const {
     MAILING_SERVICE_CLIENT_ID, 
     MAILING_SERVICE_CLIENT_SECRET, 
     MAILING_SERVICE_CLIENT_REFRESH_TOKEN, 
-    SENDER_EMAIL_ADDRESS
+    SENDER_EMAIL_ADDRESS,
 } = process.env;
 
-const oauth2Client = new OAUTH2(
+const oauth2Client = new OAuth2(
     MAILING_SERVICE_CLIENT_ID, 
     MAILING_SERVICE_CLIENT_SECRET, 
     MAILING_SERVICE_CLIENT_REFRESH_TOKEN,
@@ -19,7 +20,7 @@ const oauth2Client = new OAUTH2(
 
 //send the email
 
-export const sendEmail = (to, url) =>{
+export const sendEmail = (to, url, txt, subject) =>{
     oauth2Client.setCredentials({
         refresh_token: MAILING_SERVICE_CLIENT_REFRESH_TOKEN,
     });
@@ -27,11 +28,11 @@ export const sendEmail = (to, url) =>{
     const smtpTransport = nodemailer.createTransport({
         service: "gmail",
         auth:{
-            type:"OAUTH2",
-            user:SENDER_EMAIL_ADDRESS,
+            type: "OAuth2",
+            user: SENDER_EMAIL_ADDRESS,
             clientId: MAILING_SERVICE_CLIENT_ID,
             clientSecret: MAILING_SERVICE_CLIENT_SECRET,
-            refreshToken:MAILING_SERVICE_CLIENT_REFRESH_TOKEN,
+            refreshToken: MAILING_SERVICE_CLIENT_REFRESH_TOKEN,
             accessToken
         }
     });
@@ -39,7 +40,7 @@ export const sendEmail = (to, url) =>{
         from: SENDER_EMAIL_ADDRESS,
         to: to,
         subject: subject,
-        html:"",
+        html: activateEmailTemplate(to, url),
     }
     smtpTransport.sendMail(mailOption,(err, info)=>{
         if(err) return err

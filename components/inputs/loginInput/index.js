@@ -5,7 +5,6 @@ import styles from './styles.module.scss'
 import { ErrorMessage, useField } from 'formik'
 export default function LoginInput({icon,placeholder,...props}) {
   const [field, meta] = useField(props)
-  console.log(meta);
     return (
     <div className={`${styles.input}
     ${meta.touched && meta.error ? styles.error: ''}`}>

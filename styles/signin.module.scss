@@ -126,3 +126,10 @@
     border: 1px solid #66666683;
     cursor: pointer;
 }
+.error{
+    color: $error-color;
+}
+
+.success{
+    color: $success-color;
+}

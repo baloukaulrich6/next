@@ -35,3 +35,12 @@ border-radius: 2px;
     align-items: center;
     gap: 5px;
 }
+.error{
+    padding: 10px;
+    color: $error-color;
+}
+
+.success{
+    padding: 10px;
+    color: $success-color;
+}

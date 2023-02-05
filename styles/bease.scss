@@ -2,8 +2,15 @@ $or-color:#febd69;
 $ror-color:#ffaa3a;
 $shadow-1: rgba(99, 99 , 99, .2) 0px 2px 8px 0px ;
 $error-color: #ed4337;
+$grey-colo :#f8f8f8;
 $error-m-color: rgba(255, 47, 47, 0.411);
 $success-color: #6cc070;
+$yello :#E67A00;
+.container{
+max-width: 1800px;
+margin: 0 auto;
+padding: 1rem;
+}
 .btn_primary{
 display: flex;
 align-items: center;
@@ -44,3 +51,162 @@ border-radius: 2px;
     padding: 10px;
     color: $success-color;
 }
+
+//--------------------Swiper--------------------------
+.swiper {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+  
+    /* Center slide text vertically */
+    // display: -ms-flexbox;
+    // display: -webkit-flex;
+    // display: -webkit-flex;
+    // display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+  }
+  
+  .swiper-slide img {
+    display: block;
+    width:  100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+  }
+  
+  .swiper {
+    margin-left: auto;
+    margin-right: auto;
+    &:hover{
+        .swiper-button-next,
+        .swiper-button-prev{
+            display: grid;
+        }
+    }
+  }
+  
+.mySwiper,
+.offers_swiper{
+    .swiper{
+        border-radius: 10px !important;
+        overflow: hidden !important;
+    } 
+    .swiper-slide img{
+        height: 300px !important;
+        border-radius: 10px !important;
+        box-shadow: $shadow-1 !important;
+    }
+    .swiper-pagination-bullet{
+        width: 9px !important;
+        border-radius: 5px !important;
+    }
+    .swiper-pagination-bullet-active{
+        background-color: $ror-color !important;
+        width: 13px !important;
+    }
+    .swiper-button-prev,
+    .swiper-button-next{
+        color: #fff;
+        transform: scale(0.5) !important;
+        width: 50px !important;
+        height: 80px !important;
+        transition: 0.2s;
+        background: rgba(102, 102, 102, 0.123) !important;
+        display: none;
+        place-items: center ;
+    }
+    .swiper-button-prev{
+        left: -13px;
+    }
+    .swiper-button-next{
+        right: -13px;
+    }
+}
+
+.offers_swiper{
+    max-width: 550px;
+    transform: translateX(30%);
+    .swiper{
+        width: 100%;
+        height: 100%;
+    }
+    .swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        background: #fff;
+      
+        /* Center slide text vertically */
+        display: -ms-flexbox;
+        //display: -webkit-flex;
+        //display: -webkit-flex;
+        //display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+        width: 150px !important;
+        border-radius: 10px !important;
+        height: 90% !important;
+        margin-top: 0.6rem !important;
+        box-shadow: $shadow-1;
+        &:hover{
+            transform: scale(1.03);
+            transition: 0.2s;
+        } 
+        span{
+            position: absolute;
+            color: #fff;
+            &:first-of-type{
+                bottom: 10px;
+                width: 90px;
+                height: 25px;
+                border-radius: 50px;
+                font-size: 16px;
+                font-weight: 600;
+                background: $yello;
+            }
+            &:last-of-type{
+                font-style:italic;
+                top: -5px;
+                right: -5px;
+                background: $ror-color;
+                height: 40px;
+                width: 40px;
+                border-radius: 50%;
+                display: grid;
+                place-items: center;
+                font-size: 16px;
+                font-weight: 600;
+                box-shadow: $shadow-1;
+            }
+        } 
+      }
+      .swiper-slide img {
+        position: absolute;
+        top: 0;
+        display: block;
+        width: 100% ;
+        height: 100% !important;
+        object-fit: cover !important;
+      }
+      
+    .swiper-pagination{
+        display: none;
+    }
+}
+//--------------------Swiper--------------------------

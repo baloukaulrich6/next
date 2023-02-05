@@ -1,0 +1,53 @@
+.main{
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    gap: 10px;
+    grid-template-areas: 
+        "menu header header"
+        "menu swiper user"
+        "menu offers user";
+    .menu{
+        grid-area: menu;
+        height: 590px;
+        background: red;
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: $shadow-1;
+    }
+    .header{
+       grid-area: header;
+       height: 40px;
+       background: orange; 
+       background: #fff;
+       border-radius: 10px;
+       box-shadow: $shadow-1;
+    }
+    .swiper{
+        grid-area: swiper;
+        height: 300px;
+        background: yellow;
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: $shadow-1;
+    }
+    .offers{
+        grid-area: offers;
+        overflow: hidden;
+        height: 220px;
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: $shadow-1;
+        background-image: url("../../../public/images/flash.png");
+        //background-position:  -130px ;
+        background-size: cover;
+        
+    }
+    .user{
+        grid-area: user;
+        height: 540px;
+        background: green;
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: $shadow-1;
+    }
+}

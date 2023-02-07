@@ -28,7 +28,7 @@ export default function Offers() {
             <SwiperSlide>
                 <Link href=''>
                     <img src={offer.image} alt=""/>
-                    <span>{offer.price}</span>
+                    <span>{offer.price} Xaf</span>
                     <span>-{offer.discount}%</span>
                 </Link>
             </SwiperSlide>

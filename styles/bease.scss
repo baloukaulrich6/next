@@ -7,7 +7,7 @@ $error-m-color: rgba(255, 47, 47, 0.411);
 $success-color: #6cc070;
 $yello :#E67A00;
 .container{
-max-width: 1800px;
+max-width: 1600px;
 margin: 0 auto;
 padding: 1rem;
 }
@@ -97,6 +97,8 @@ border-radius: 2px;
   }
   
 .mySwiper,
+.user__swiper,
+.userMenu__swiper,
 .offers_swiper{
     .swiper{
         border-radius: 10px !important;
@@ -133,7 +135,6 @@ border-radius: 2px;
         right: -13px;
     }
 }
-
 .offers_swiper{
     max-width: 550px;
     transform: translateX(30%);
@@ -209,4 +210,19 @@ border-radius: 2px;
         display: none;
     }
 }
+.userMenu__swiper{
+    .swiper-slide {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 18px;
+        font-size: 22px;
+        font-weight: bold;
+        color: #fff;
+        img{
+            height: 240px !important; 
+        }
+      }
+}
+    
 //--------------------Swiper--------------------------

@@ -14,9 +14,15 @@ import Link from 'next/link';
 export default function Offers() {
   return (
     <div className={styles.offers}>
+      <div className={styles.offers__text}>
+        <p>
+          use code <b>“MHAJJI”</b> for 30% off all products.
+        </p>
+        <Link href="/browse">Shop now</Link>
+      </div>
       <Swiper
         slidesPerView={3}
-        spaceBetween={30}
+        spaceBetween={10}
         pagination={{
           clickable: true,
         }}
@@ -24,15 +30,15 @@ export default function Offers() {
         modules={[Pagination, Navigation]}
         className="offers_swiper"
       >
-        {offersArray.map((offer)=>( 
-            <SwiperSlide>
-                <Link href=''>
-                    <img src={offer.image} alt=""/>
-                    <span>{offer.price} Xaf</span>
-                    <span>-{offer.discount}%</span>
-                </Link>
-            </SwiperSlide>
-        ))} 
+        {offersArray.map((offer) => (
+          <SwiperSlide>
+            <Link href="">
+              <img src={offer.image} alt="" />
+            </Link>
+            <span>{offer.price}$</span>
+            <span>-{offer.discount}%</span>
+          </SwiperSlide>
+        ))}
       </Swiper>
     </div>
   );

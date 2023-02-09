@@ -28,7 +28,7 @@ export default function SwiperMain() {
           }}
         navigation={true}
         modules={[Autoplay, Pagination, Navigation]}
-        className="mySwiper"
+        className="mainSwiper"
       >
         {[...Array(10).keys()].map((i) =>(
            <SwiperSlide>

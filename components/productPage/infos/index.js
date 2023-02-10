@@ -4,6 +4,10 @@ import {useRouter} from 'next/router'
 import Link from 'next/Link'
 import {useEffect, useState} from "react"
 import {TbMinus, TbPlus} from "react-icons/tb"
+import {BsHandbagFill, BsHeart} from "react-icons/bs"
+import Share from "../share"
+
+
 export default function Infos({product, setActiveImg}) {
     const router = useRouter()
     const [size, setSize] = useState(router.query.size)
@@ -93,6 +97,19 @@ export default function Infos({product, setActiveImg}) {
                     <TbPlus/>
                 </button>
             </div>
+            <div className={styles.infos__actions}>
+                <button 
+                disabled={product.quantity < 1 }
+                style={{cursor: `${product.quantity < 1 ? "not-allowed": ""}`}} >
+                    <BsHandbagFill />
+                    <b>ADD TO CART</b>
+                </button>
+                <button>
+                    <BsHeart />
+                    WISHLIST
+                </button>
+            </div>
+            <Share />
         </div>
     </div>
   )

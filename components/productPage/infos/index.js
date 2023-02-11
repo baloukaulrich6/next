@@ -1,11 +1,11 @@
 import { Rating } from '@mui/material'
 import styles from './styles.module.scss'
 import {useRouter} from 'next/router'
-import Link from 'next/Link'
+import Link from 'next/link'
 import {useEffect, useState} from "react"
 import {TbMinus, TbPlus} from "react-icons/tb"
 import {BsHandbagFill, BsHeart} from "react-icons/bs"
-import Share from "../share"
+import Share from "./share"
 
 
 export default function Infos({product, setActiveImg}) {
@@ -61,14 +61,14 @@ export default function Infos({product, setActiveImg}) {
                 {size 
                  ? product.quantity 
                  : product.sizes.reduce((start, next) => start + next.qty, 0)
-                }{""} pieces available
+                }pieces available
             </span>
             <div className = {styles.infos__size}>
                 <h4>Select a Size :</h4>
                 <div className={styles.infos__sizes_wrap}>
                     {product.sizes.map((size, i)=>(
                         <Link href= {`/product/${product.slug}?style=${router.query.style}&size=${i}`}>
-                            <div className={`${styles.infos__sizes_size} ${i==router.query.size && styles.active_size}`}
+                            <div className={`${styles.infos__sizes_size} ${i == router.query.size && styles.active_size}`}
                             onClick={()=>setSize(size.size)}>{size.size}</div>
                         </Link>
                     ))}

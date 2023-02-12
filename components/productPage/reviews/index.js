@@ -1,8 +1,11 @@
 import { Rating } from '@mui/material'
+import { signIn, useSession } from 'next-auth/react'
+import AddReview from './AddReview'
 import styles from './styles.module.scss'
 
 export default function Reviews({product}) {
-  return (
+  const {data: session} = useSession()
+    return (
     <div className={styles.reviews}>
         <div className={styles.reviews__container}>
             <h1>Customer Reviews ({product.reviews.length})</h1>
@@ -39,6 +42,10 @@ export default function Reviews({product}) {
                     }
                 </div>
             </div>
+            {
+                session ? (<AddReview product={product}/> ): (
+                <button onClick={() => signIn()} className={styles.login_btn}>Login to Add reviews</button>)
+            }
         </div>
     </div>
   )

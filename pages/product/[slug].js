@@ -9,6 +9,7 @@ import SubCategory from "../../models/SubCategory";
 import MainSwiper from "../../components/productPage/MainSwiper";
 import { useState } from "react";
 import Infos from "../../components/productPage/infos";
+import Reviews from "../../components/productPage/reviews";
 export default function product({ product }) {
     const [activeImg, setActiveImg] = useState("")
   return (
@@ -29,6 +30,7 @@ export default function product({ product }) {
                 <MainSwiper images={product.images} activeImag={activeImg} />
                 <Infos product={product} setActiveImg={setActiveImg} />
           </div>
+          <Reviews product={product}/>
         </div>
       </div>
     </div>
@@ -79,6 +81,23 @@ export async function getServerSideProps(context) {
         : subProduct.sizes[size].price,
     priceBefore: subProduct.sizes[size].price,
     quantity: subProduct.sizes[size].qty,
+    ratings:[
+      {
+        "percentage": 76,
+      },
+      {
+        "percentage": 14,
+      },
+      {
+        "percentage": 6,
+      },
+      {
+        "percentage": 4,
+      },
+      {
+        "percentage": 0,
+      },
+    ],
   };
   //---------------
   db.disconnectDb();

@@ -16,8 +16,8 @@ export default function product({ product }) {
     <div>
       <Head>
         <title>{product.name}</title>
-      </Head>
-      <Header country />
+      </Head> 
+      <Header country = "Cameroun" />
       <div className={styles.product}>
         <div className={styles.product__container}>
           <div className={styles.path}>

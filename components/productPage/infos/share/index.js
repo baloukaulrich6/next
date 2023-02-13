@@ -26,7 +26,7 @@ import {
 export default function Share() {
   return (
     <div className={styles.share}>
-      <FacebookShareButton url={window?.location.href}>
+      <FacebookShareButton url={window?.location.href} >
         <FacebookIcon size={38} />
       </FacebookShareButton>
       <FacebookMessengerShareButton url={window?.location.href}>

@@ -8,6 +8,7 @@ import {BsHandbagFill, BsHeart} from "react-icons/bs"
 import Share from "./share"
 import Accordian from './Accordian'
 import SimillarSwiper from './SimillarSwiper'
+import axios from 'axios'
 
 
 export default function Infos({product, setActiveImg}) {
@@ -23,6 +24,10 @@ export default function Infos({product, setActiveImg}) {
             setQty(product.quantity)
         }
     }, [router.query.size])
+    const addToCarHandler = async ()=>{
+        const {data} = await axios.get(`/api/product/${product._id}?style=${product.style}&size=${router.query.size}`)
+        console.log("data----->", data);
+    }
   return (
     <div className={styles.infos}>
         <div className={styles.infos__container}>
@@ -102,7 +107,8 @@ export default function Infos({product, setActiveImg}) {
             <div className={styles.infos__actions}>
                 <button 
                 disabled={product.quantity < 1 }
-                style={{cursor: `${product.quantity < 1 ? "not-allowed": ""}`}} >
+                style={{cursor: `${product.quantity < 1 ? "not-allowed": ""}`}} 
+                onClick={()=> addToCarHandler()}>
                     <BsHandbagFill />
                     <b>ADD TO CART</b>
                 </button>

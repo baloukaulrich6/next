@@ -6,30 +6,34 @@ export default function Select({ property, text, data, handleChange }) {
   const [visible, setVisible] = useState(false);
   return (
     <div className={styles.select}>
-        {text} :
-      <div
-        className={styles.select__header}
-        onMouseOver={() => setVisible(true)}
-        onMouseLeave={() => setVisible(false)}
+    {text}:
+    <div
+      className={styles.select__header}
+      onMouseOver={() => setVisible(true)}
+      onMouseLeave={() => setVisible(false)}
+      style={{
+        background: `${
+          text == "Style" && property.color && `${property.color}`
+        }`,
+      }}
+    >
+      <span
+        className={`${styles.flex} ${styles.select__header_wrap}`}
         style={{
-            background: `${text=="Style" && property.color && `${property.color}`}`
+          padding: "0 5px",
         }}
       >
-        <span
-          className={`${styles.flex} ${styles.select__header_wrap}`}
-          style={{ padding: "0 5px" }}
-        >
-          {text == "Size" ? property || `Select ${text}`  : 
-          text == "Style" 
-          && property.image ? 
-          <img src={property.image} alt=""/> :
-          (
-            text =="How does it fit" && property ? ( 
-                property
-            ) :( 
-                !property && text=="How does it fit" ? ("How does it fit"):  ("Select Style")
-            )
-          )}
+        {text == "Size" ? (
+          property || `Select ${text}`
+        ) : text == "Style" && property.image ? (
+          <img src={property.image} alt="" />
+        ) : text == "How does it fit" && property ? (
+          property
+        ) : !property && text == "How does it fit" ? (
+          "How Does it fit"
+        ) : (
+          "Select Style"
+        )}
           <IoArrowDown />
         </span>
         {visible && (

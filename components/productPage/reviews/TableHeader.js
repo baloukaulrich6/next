@@ -8,7 +8,7 @@ export default function TableHeader({ reviews, allSizes, colors }) {
   const [order, setOrder] = useState();
   return (
     <div className={styles.table__header}>
-      <TableSelect
+      {/* <TableSelect
         property={rating}
         text="Rating"
         data={ratings.filter((x) => x.value !== rating)}
@@ -19,7 +19,7 @@ export default function TableHeader({ reviews, allSizes, colors }) {
         text="Size"
         data={allSizes.filter((x) => x.size !== size)}
         handleChange={setSize}
-      />
+      /> */}
       <TableSelect
         property={style}
         text="Style"

@@ -9,12 +9,18 @@ import Share from "./share"
 import Accordian from './Accordian'
 import SimillarSwiper from './SimillarSwiper'
 import axios from 'axios'
+import { useDispatch, useSelector} from 'react-redux'
+import { addToCart } from '../../../store/cartSlice'
 
 
 export default function Infos({product, setActiveImg}) {
     const router = useRouter()
+    const dispatch = useDispatch()
     const [size, setSize] = useState(router.query.size)
     const [qty, setQty] = useState(1)
+    const [error, setError] = useState("")
+    const { cart } = useSelector((state) =>({ ...state }));
+    console.log(cart);
     useEffect(()=>{
         setSize("");
         setQty(1);
@@ -25,8 +31,34 @@ export default function Infos({product, setActiveImg}) {
         }
     }, [router.query.size])
     const addToCarHandler = async ()=>{
+        if(!router.query.size){
+            setError("Please Select a size")
+            return;
+        }
         const {data} = await axios.get(`/api/product/${product._id}?style=${product.style}&size=${router.query.size}`)
-        console.log("data----->", data);
+        if(qty > data.quantity){
+            setError("The Quantity you have choosed is more than in stock. Try and lower Qty")
+            return
+        }
+        if(data.quantity < 1){
+            setError("This Product is out of stock.")
+        }else{
+            let _uid = `${data._id}_${product.style}_${router.query.size}`
+            let exist = cart.cartItems.find((p) => p._uid === _uid)
+            if(exist){
+                //update
+            }else{
+                dispatch
+                 (addToCart(
+                    {...data, 
+                        qty,
+                        size:data.size,
+                        _uid, 
+                    }
+                ))
+            }
+        }
+        
     }
   return (
     <div className={styles.infos}>
@@ -117,6 +149,9 @@ export default function Infos({product, setActiveImg}) {
               
                 </button>
             </div>
+            {
+                error && <span className={styles.error}>{error}</span>
+            }
             <Share />
             <Accordian details={[product.description, ...product.details]} />
             <SimillarSwiper />

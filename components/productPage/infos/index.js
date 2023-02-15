@@ -10,7 +10,8 @@ import Accordian from './Accordian'
 import SimillarSwiper from './SimillarSwiper'
 import axios from 'axios'
 import { useDispatch, useSelector} from 'react-redux'
-import { addToCart } from '../../../store/cartSlice'
+import { addToCart, updateCart } from '../../../store/cartSlice'
+import { offersArray } from '@/data/home'
 
 
 export default function Infos({product, setActiveImg}) {
@@ -20,7 +21,6 @@ export default function Infos({product, setActiveImg}) {
     const [qty, setQty] = useState(1)
     const [error, setError] = useState("")
     const { cart } = useSelector((state) =>({ ...state }));
-    console.log(cart);
     useEffect(()=>{
         setSize("");
         setQty(1);
@@ -47,6 +47,13 @@ export default function Infos({product, setActiveImg}) {
             let exist = cart.cartItems.find((p) => p._uid === _uid)
             if(exist){
                 //update
+                let newcart = cart.cartItems.map((p)=>{
+                    if(p._uid == exist._uid){
+                        return {...p, qty:qty}
+                    }
+                    return p
+                })
+                dispatch(updateCart(newcart))
             }else{
                 dispatch
                  (addToCart(

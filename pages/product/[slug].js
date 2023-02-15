@@ -11,14 +11,17 @@ import { useState } from "react";
 import Infos from "../../components/productPage/infos";
 import Reviews from "../../components/productPage/reviews";
 import User from "../../models/User";
-export default function product({ product }) {
+export default function product({country, product }) {
     const [activeImg, setActiveImg] = useState("")
   return (
     <div>
       <Head>
         <title>{product.name}</title>
       </Head> 
-      <Header country = "Cameroun" />
+      <Header country={{
+          name: "Cameroun",
+          flag: "https://cdn.ipregistry.co/flags/emojitwo/cm.svg",
+        }} />
       <div className={styles.product}>
         <div className={styles.product__container}>
           <div className={styles.path}>

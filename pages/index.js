@@ -26,7 +26,10 @@ export default function Home({country, products}) {
   const { data: session } = useSession()
   return (
   <>
-    <Header country={country}/>
+    <Header country={{
+          name: "Cameroun",
+          flag: "https://cdn.ipregistry.co/flags/emojitwo/cm.svg",
+        }}/>
     <div className={styles.home}>
       <div className={styles.container}>
         <Main  />
@@ -70,8 +73,9 @@ export async function getServerSideProps(){
   db.connectDb();
   let products = await Product.find().sort({createAt: -1}).lean()
   let data = await axios.get("https://api.ipregistry.co/?key=brrjx68hmpvjdbg4").then((res)=>{
+  
   return res.data.location.country;
-
+  
 }).catch((err)=>{
   console.log(err);
 })
@@ -84,3 +88,4 @@ return{
 };
 
 }
+

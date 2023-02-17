@@ -59,7 +59,7 @@ export default function Infos({product, setActiveImg}) {
                  (addToCart(
                     {...data, 
                         qty,
-                        size:data.size,
+                        size:data.size, 
                         _uid, 
                     }
                 ))

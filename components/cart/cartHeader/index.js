@@ -1,14 +1,15 @@
 import styles from "./styles.module.scss"
 import {useState, useEffect} from "react";
 import {useSelector, useDispatch} from "react-redux"
+import {compareArrays} from '../../../utils/arrays_utils'
 
 export default function CartHeader({cartItems,selected, setSelected}) {
   const [active, setActive] = useState()  
   const dispatch = useDispatch()
   useEffect(()=>{
-      const check = JSON.stringify(cartItems) === JSON.stringify(selected)
+      const check = compareArrays(cartItems, selected)
       setActive(check)
-  },[setActive])
+  },[selected])
   const handleSelect = () =>{
     if(selected.length !== cartItems.length){
       setSelected(cartItems)

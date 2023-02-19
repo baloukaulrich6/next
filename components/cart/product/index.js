@@ -13,7 +13,7 @@ export default function Product({product, selected, setSelected}) {
     useEffect(()=>{
         const check = selected.find((p)=> p._uid == product._uid)
         setActive(check)
-    },[setActive])
+    },[selected])
     const updateQty = (type)=>{
         let newCart = cart.cartItems.map((p)=>{
             if(p._uid == product._uid){
@@ -32,8 +32,7 @@ export default function Product({product, selected, setSelected}) {
         })
         dispatch(updateCart(newCart))
     }
-    const handleSelect =() =>{
-
+    const handleSelect = () =>{
         if(active){
             setSelected(selected.filter((p)=> p._uid !== product._uid))
         }else{
@@ -49,7 +48,9 @@ export default function Product({product, selected, setSelected}) {
             BLEASY Official Store
         </div>
         <div className ={styles.product__image}>
-            <div className={`${styles.checkbox} ${active ? styles.active  : ""}`} onClick={() => handleSelect()}></div>
+            <div 
+            className={`${styles.checkbox} ${active ? styles.active : ""}`} 
+                onClick={() => handleSelect()}></div>
             <img src ={product.images[0].url} alt="" />
             <div className={styles.col}>
                 <div className={styles.grid}>

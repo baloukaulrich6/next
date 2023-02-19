@@ -13,13 +13,30 @@ export default function ProductsSwiper({ header , products, bg}) {
         spaceBetween={30}
         navigation={true}
         modules={[Navigation]}
-        className="products-swiper"
+        className="products__swiper"
+        breakpoints={{
+          450: {
+            slidesPerView: 2,
+          },
+          630: {
+            slidesPerView: 3,
+          },
+          920: {
+            slidesPerView: 4,
+          },
+          1232: {
+            slidesPerView: 5,
+          },
+          1520: {
+            slidesPerView: 6,
+          },
+        }}
       >
         {products.map((product)=>(<SwiperSlide>
             <div className="styles.product">
                 <div className={styles.product__img}><img src={product.image}/></div>
                 <div className={styles.product__infos}>
-                <h1>{product.name.length > 28 ? `${product.name.slice(0,28)}...`: product.name}</h1>
+                <h1>{product.name.length > 30 ? `${product.name.slice(0,30)}...`: product.name}</h1>
                 
                 {product.price && <span>{product.price} FCFA</span>}
                 </div>

@@ -43,7 +43,7 @@ import mongoose from 'mongoose';
         phoneNumber2:{
             type: String,
         },
-        address:{
+        address1:{
             type: String,
         },
         city:{

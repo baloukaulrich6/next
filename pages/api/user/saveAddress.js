@@ -1,24 +1,24 @@
-import Cart from '../../../models/Cart'
-import Product from '../../../models/Product'
 import User from '../../../models/User'
 import nc from 'next-connect'
 import db from "../../../utils/db"
-const handler = nc()
+import auth from '../../../middleware/auth'
+const handler = nc().use(auth)
 
 handler.post(async (req, res) =>{
     try{
         db.connectDb()
-        const {address, user_id} = req.body
-        const user = User.findById(user_id)
+        const {address} = req.body
+        const user = User.findById(req.user)
         await user.updateOne({
             $push:{
                 address: address,
             }
-        })
-        res.json(address)
+        },{new: true})
+ 
         db.disconnectDb()
+      return  res.json({addresses: user.address})
     }catch(err){
         return res.status(500).json({message: err.message})
     }
 })
-export default handler
+export default handler 

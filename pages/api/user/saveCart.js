@@ -3,14 +3,17 @@ import Product from '../../../models/Product'
 import User from '../../../models/User'
 import nc from 'next-connect'
 import db from "../../../utils/db"
-const handler = nc()
+import auth from '../../../middleware/auth'
+const handler = nc().use(auth)
 
 handler.post(async (req, res) =>{
+    
     try{
+        
         db.connectDb()
-        const {cart, user_id}=req.body
+        const {cart}=req.body
         let products = []
-        let user = await User.findById(user_id)
+        let user = await User.findById(req.user)
         let existing_cart = await Cart.findOne({user: user._id})
         if(existing_cart){
             await existing_cart.remove()

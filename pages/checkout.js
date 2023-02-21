@@ -7,11 +7,13 @@ import Header from "../components/cart/header"
 import Shipping from "../components/checkout/shipping"
 import { useEffect, useState } from "react"
 import Products from "../components/checkout/products"
+import Payment from "../components/checkout/payment"
 
 
 export default function checkout({cart, user}) {
     const [addresses, setAddresses] = useState(user?.address || []);
     const [selectedAddress, setSelectedAddress] = useState ()
+    const [paymentMethod, setPaymentMethod] = useState("")
     useEffect(() => {
         let check = addresses.find((address) => address.active == true);
         if (check) {
@@ -32,7 +34,9 @@ export default function checkout({cart, user}) {
                />
             <Products cart={cart}/>
         </div>
-        <div className={styles.checkout__side}></div>
+        <div className={styles.checkout__side}>
+            <Payment paymentMethod={paymentMethod} setPaymentMethod={setPaymentMethod}/>
+        </div>
     </div>
     </>
   )

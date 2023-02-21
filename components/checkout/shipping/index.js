@@ -101,7 +101,7 @@ export default function Shipping({ addresses, setAddresses, user }) {
   return (
     <div className={styles.shipping}>
       <div className={styles.header}>
-        <h2>Shipping Information</h2>
+        <h3>Shipping Information</h3>
       </div>
       <div className={styles.addresses}>
         {addresses.map((address) => (

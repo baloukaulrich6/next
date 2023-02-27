@@ -58,12 +58,12 @@ export default function Shipping({ addresses, setAddresses, user }) {
       .required("Phon number valide +237693000000.")
       .phone()
       .min(12, "Phone number must be atleast 3 characters long.")
-      .max(12, "Phone number must be less than 20 characters long."),
+      .max(20, "Phone number must be less than 20 characters long."),
     phoneNumber2: Yup.string()
       .required("Phon number valide +237693000000")
       .phone()
       .min(12, "Phone number must be atleast 12 characters long.")
-      .max(12, "Phone number must be less than 20 characters long."),
+      .max(20, "Phone number must be less than 20 characters long."),
     state: Yup.string()
       .required("State name is required.")
       .min(2, "State name should contain 2-60 characters..")

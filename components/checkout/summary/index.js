@@ -46,6 +46,8 @@ user
                 shippingAddress: selecteAddress,
                 paymentMethod,
                 total: totalAfterDiscount !== "" ? totalAfterDiscount : cart.cartTotal,
+                totalBeforeDiscount: cart.cartTotal,
+                couponApplied: coupon,
             })
             Router.push(`/order/${data.order_id}`)
         }catch(error){

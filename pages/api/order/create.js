@@ -13,7 +13,9 @@ handler.post(async (req, res) =>{
             products, 
             shippingAddress, 
             paymentMethod, 
-            total} = req.body;
+            total,
+            totalBeforeDiscount,
+            couponApplied,} = req.body;
             const user = await User.findById(req.user);
             const newOrder = await new Order({
                 user: user.id,
@@ -21,13 +23,13 @@ handler.post(async (req, res) =>{
                 shippingAddress,
                 paymentMethod,
                 total,
+                totalBeforeDiscount,
+      couponApplied,
 
             }).save();
-        
-   
         db.disconnectDb()
-      return  res.json({
-        order_id: newOrder.order_id,
+        return  res.json({
+        order_id: newOrder._id,
       })
     }catch(err){
         return res.status(500).json({message: err.message})

@@ -13,16 +13,15 @@ import Summary from "../components/checkout/summary"
 
 export default function checkout({cart, user}) {
     const [addresses, setAddresses] = useState(user?.address || []);
-    const [selectedAddress, setSelectedAddress] = useState ()
     const [paymentMethod, setPaymentMethod] = useState("")
     const [totalAfterDiscount, setTotalAfterDiscount] = useState("")
     const [selecteAddress, setSelecteAddress] = useState("")
     useEffect(() => {
-        let check = addresses.find((address) => address.active == true);
+        let check = addresses.find((ad) => ad.active == true);
         if (check) {
-          setSelectedAddress(check);
+            setSelecteAddress(check);
         } else {
-          setSelectedAddress("");
+            setSelecteAddress("");
         }
       }, [addresses]);
   return (

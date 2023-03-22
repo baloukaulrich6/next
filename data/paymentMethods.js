@@ -2,7 +2,7 @@ export const paymentMethods = [
   
   {
     name: "Credit Card",
-    id: "credit_card",
+    id: "credit",
     description: "",
     images: [
       "visa",

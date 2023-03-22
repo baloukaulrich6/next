@@ -8,7 +8,7 @@ import { useRouter } from "next/router";
 import { signIn, useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import Checkout from "../components/cart/checkout"; 
-import PaymentMethods from "../components/cart/paymentMethode";
+import PaymentMethods from "../components/cart/paymentMethods";
 import ProductsSwiper from "../components/productsSwiper";
 import { women_swiper } from "../data/home";
 import {saveCard} from "../request/user"

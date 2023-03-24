@@ -48,7 +48,6 @@ export default function cart() {
                 <div className={styles.cart__container}>
                   <CartHeader 
                     cartItems={cart.cartItems} 
-                    className={cart.cartItems}
                     selected={selected}
                     setSelected={setSelected}/>
                  <div className={styles.cart__products}> {

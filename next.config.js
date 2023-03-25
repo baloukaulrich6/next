@@ -5,7 +5,7 @@ const nextConfig = {
   swcMinify: true,
   sassOptions: {
     includePaths: [path.join(__dirname, "styles")],
-    prependData: `@import "./base.scss";`,
+    prependData: `@import "./bease.scss";`,
   },
 };
 

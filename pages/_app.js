@@ -5,6 +5,8 @@ import  store from '../store'
 import { PersistGate } from 'redux-persist/integration/react'
 import { persistStore } from 'redux-persist'
 import { SessionProvider } from "next-auth/react"
+import {ToastContainer} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 let persistor = persistStore(store)
 
 function MyApp({ Component, pageProps: { session, ...pageProps } }) {
@@ -20,6 +22,20 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
    <SessionProvider session={session}>
      <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
+        <ToastContainer
+            position="top-right"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="light"
+            />
+            {/* Same as */}
+        <ToastContainer />
           <Component {...pageProps} />
         </PersistGate>
       </Provider>

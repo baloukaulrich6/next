@@ -5,22 +5,26 @@ import * as Yup from 'yup';
 import AdminInput from "../../inputs/adminInput";
 import axios from "axios";
 import { toast } from "react-toastify";
+import SingularSelect from "../../selected/SingularSelect"
 
-export default function Create({setCategories}) {
-    const [name, setName] = useState("");
+export default function Create({categories, setSubCategories}) {
+    const [name, setName] = useState("")
+    const [parent, setParent] = useState("");
     const validate = Yup.object({
-        name: Yup.string().required('Category name is required')
-        .min(3, "Category name must be between  3 and 20 character.")
-        .max(20, "Category name must be between  3 and 20 character.")
+        name: Yup.string().required('setSubCategories name is required')
+        .min(3, "setSubCategories name must be between  3 and 20 character.")
+        .max(20, "setSubCategories name must be between  3 and 20 character.")
         .matches(
             /^[a-zA-Z\s]*$/,
             "Numbers and special charcters are not allowed."),
+        parent: Yup.string().required("please choose a parent Categories")
     })
     const submitHandler = async() =>{
         try{
-            const {data} = await axios.post("/api/admin/category", {name})
-            setCategories(data.categories)
-            setName('')
+            const {data} = await axios.post("/api/admin/subCategory", {name, parent})
+            setSubCategories(data.subCategories)
+            setName('');
+            setParent("")
             toast.success(data.message)
         }catch(error){
             toast.error(error.response.data.message)
@@ -30,7 +34,7 @@ export default function Create({setCategories}) {
     <>
      <Formik
      enableReinitialize
-     initialValues={{name}}
+     initialValues={{name, parent}}
      validationSchema={validate}
      onSubmit={()=>{submitHandler()}}>
         {(formik) =>(
@@ -40,14 +44,22 @@ export default function Create({setCategories}) {
                 type= "text"
                 label="Name"
                 name='name'
-                placeholder="Category name"
+                placeholder="Sub-Category name"
                 onChange={(e) => setName(e.target.value)}
                 />
-                 <div className = {styles.btnWrap}>
+                <SingularSelect 
+                   name="parent" 
+                   value={parent} 
+                   data={categories} 
+                   placeholder=" Select Category"
+                   handleChange={(e) => setParent(e.target.value)}
+                   />
+                <div className = {styles.btnWrap}>
                       <button type="submit" className={`${styles.btn}`}>
-                      <span>Add Category</span>
+                    <span>Add SubCategory</span>
                     </button>
                 </div>
+              
             </Form>
         )}    
     </Formik>   

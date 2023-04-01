@@ -1,4 +1,4 @@
-import styles from "../../../../styles/product.module.scss"
+import styles from "../../../../styles/products.module.scss"
 import Layout from "../../../../components/admin/layout/index"
 import db from "../../../../utils/db"
 import Product from "../../../../models/Product"

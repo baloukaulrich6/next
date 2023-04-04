@@ -1,13 +1,20 @@
 import styles from  "./styles.module.scss"
 import Sidebar from "./sidebar";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import DialogModal from "../../dialogModal";
+import { useEffect } from "react";
+import { hideDialog } from "../../../store/DialogSlice";
 
 export default function Layout({children}) {
     const {expandSidebar} = useSelector((state) =>({...state}))
     const showSidebar = expandSidebar.expandSidebar;
-    console.log(showSidebar)
+    const dispatch = useDispatch()
+    useEffect(()=>{
+      dispatch(hideDialog())
+    }, [])
   return (
     <div className={styles.layout}>
+      <DialogModal />
         <Sidebar />
         <div 
         style={{marginLeft: `${showSidebar ? "280px" : "80px"}`}}

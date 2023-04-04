@@ -10,13 +10,16 @@ import * as Yup from "yup";
 import SingularSelect from "../../../../components/selected/SingularSelect";
 import MultipleSelect from "../../../../components/selected/MultipleSelect";
 import AdminInput from "../../../../components/inputs/adminInput/index";
-//import Images from "../../../../components/admin/createProduct/images";
-//import Colors from "../../../../components/admin/createProduct/colors";
-//import Style from "../../../../components/admin/createProduct/style";
-//import Sizes from "../../../../components/admin/createProduct/clickToAdd/Sizes";
-//import Details from "../../../../components/admin/createProduct/clickToAdd/Details";
-//import Questions from "../../../../components/admin/createProduct/clickToAdd/Questions"
-//import { showDialog } from "../../../../store/DialogSlice";
+import Images from "../../../../components/admin/createProduct/images";
+import Colors from "../../../../components/admin/createProduct/colors";
+import Style from "../../../../components/admin/createProduct/style";
+import Sizes from "../../../../components/admin/createProduct/clickToAdd/Sizes";
+import Details from "../../../../components/admin/createProduct/clickToAdd/Details";
+import Questions from "../../../../components/admin/createProduct/clickToAdd/Questions";
+import { showDialog } from "../../../../store/DialogSlice";
+import { validateCreateProduct } from "../../../../utils/validation";
+import { useDispatch } from "react-redux";
+import DialogModal from "../../../../components/dialogModal";
 const initialState = {
   name: "",
   description: "",
@@ -57,30 +60,24 @@ export default function create({ categories, parents }) {
   const [product, setProduct] = useState(initialState);
   const [subs, setSubs] = useState([]);
   const [colorImage, setColorImage] = useState("");
-  const [image, setImage] = useState("");
+  const [images, setImages] = useState("");
   const [description_images, setDescription_images] = useState("");
   const [loading, setLoading] = useState(false);
-  console.log(product);
+  const dispatch = useDispatch()
   useEffect(() => {
     const getParentData = async () => {
-      try {
-        const { data } = await axios.get(`/api/product/${product.parent}`);
-        console.log(data);
-        if (data) {
-          setProduct({
-            ...product,
-            name: data.name,
-            description: data.description,
-            brand: data.brand,
-            category: data.category,
-            subCategories: data.subCategories,
-            questions: [],
-            details: [],
-          });
-        }
-      } catch (error) {
-        console.error(error);
-        alert("Une erreur s'est produite lors de la récupération des données");
+      const { data } = await axios.get(`/api/product/${product.parent}`);
+      if (data) {
+        setProduct({
+          ...product,
+          name: data.name,
+          description: data.description,
+          brand: data.brand,
+          category: data.category,
+          subCategory: data.subCategory,
+          question: [],
+          details: [],
+        });
       }
     };
     getParentData();
@@ -96,40 +93,25 @@ export default function create({ categories, parents }) {
     }
     getSubs();
   }, [product.category]);
-  const validate = Yup.object({
-    name: Yup.string()
-      .required("Please add a name")
-      .min(10, "Product name must bewteen 10 and 300 characters.")
-      .max(300, "Product name must bewteen 10 and 300 characters."),
-    brand: Yup.string().required("Please add a brand"),
-    category: Yup.string().required("Please select a category."),
-    /*
-        subCategories: Yup.array().min(
-          1,
-          "Please select atleast one sub Category."
-        ),
-       */
-    sku: Yup.string().required("Please add a sku/number"),
-    color: Yup.string().required("Please add a color"),
-    description: Yup.string().required("Please add a description"),
-  });
-  const createProduct = async () => {
-    let test = validateCreateProduct(product, images);
-    if (test == "valid") {
-      createProductHandler();
-    } else {
-      dispatch(
-        showDialog({
-          header: "Please follow our instructions.",
-          msgs: test,
-        })
-      );
-    }
-  };
   const handleChange = (e) => {
     const { value, name } = e.target;
     setProduct({ ...product, [name]: value });
   };
+  const validate = Yup.object({
+    name: Yup.string()
+    .required('Please Add a name')
+    .min(4, "product name must beateen and 5 and 300 characters.")
+    .max(300, "product name must beateen and 5 and 300 characters.")
+    .min(10, "product name must beateen and 5 and 300 characters."),
+    brand: Yup.string().required('Please Add a brand'),
+    category: Yup.string().required('Please Add a category'),
+    subCategories: Yup.array().min(1,'Please select atleast one sub Categories'),
+    sku: Yup.string().required('Please Add a sku / number'),
+    color: Yup.string().required('Please Add a color'),
+    description: Yup.string().required('Please Add a description'),
+  });
+  const createProduct = async () => {};
+ 
   return (
     <Layout>
       <div className={styles.header}>Create Product</div>
@@ -144,9 +126,9 @@ export default function create({ categories, parents }) {
           parent: product.parent,
           sku: product.sku,
           discount: product.discount,
-          color: product.color.color,
+          color: product.color,
           imageInputFile: "",
-          styleInout: "",
+          stylesInput: "",
         }}
         validationSchema={validate}
         onSubmit={() => {
@@ -155,45 +137,47 @@ export default function create({ categories, parents }) {
       >
         {(formik) => (
           <Form>
-            {/* <Images
-                        name="imageInputFile"
-                        header="Product Carousel Images"
-                        text="Add images"
-                        images={images}
-                        setImages={setImages}
-                        setColorImage={setColorImage}
-                    /> */}
+             <Images  
+            name = "imageInputFile"
+            header=" Product Carousel Image"
+            text= "Add images"
+            images={images}
+            setImages= {setImages}
+            setColorImage= {setColorImage}
+          /> 
             <div className={styles.flex}>
               {product.color.image && (
                 <img
                   src={product.color.image}
-                  className={styles.images_span}
+                  className={styles.image_span}
                   alt=""
                 />
               )}
               {product.color.color && (
                 <span
                   className={styles.color_span}
-                  styles={{ background: `${product.color.color}` }}
+                  style={{ background: `${product.color.color}` }}
                 ></span>
               )}
             </div>
-                      {/* <Colors
-                                name="color"
-                                product={product}
-                                setProduct={setProduct}
-                                colorImage={colorImage}
-                                />
-                                <Style
-                                name="styleInput"
-                                product={product}
-                                setProduct={setProduct}
-                                colorImage={colorImage}
-                                /> */}
+              {/* 
+            <Colors
+              name= "color"
+              product = {product}
+              setProduct={setProduct}
+              colorImage={colorImage}  
+            />
+            <Style
+              name= "styleInput"
+              product = {product}
+              setProduct={setProduct}
+              colorImage={colorImage}  
+            />
+            */}
               <SingularSelect
                 name="parent"
                 value={product.parent}
-                placeholder="Parent product"
+                placeholder="parent product"
                 data={parents}
                 header="Add to an existing product"
                 handleChange={handleChange}
@@ -212,69 +196,72 @@ export default function create({ categories, parents }) {
                   value={product.subCategories}
                   data={subs}
                   header="Select SubCategories"
-                  name="subCategories"
+                  name="SubCategories"
                   disabled={product.parent}
                   handleChange={handleChange}
                 />
               )}
               <div className={styles.header}>Basic Infos</div>
-
               <AdminInput
-                type="text"
+                types="text"
                 label="Name"
                 name="name"
-                placholder="Product name"
-                onChange={handleChange}
+                placeholder="Product name"
+                OnChanges={handleChange}
               />
               <AdminInput
-                type="text"
+                types="text"
                 label="Description"
                 name="description"
-                placholder="Product description"
-                onChange={handleChange}
+                placeholder="Product description"
+                OnChanges={handleChange}
               />
               <AdminInput
-                type="text"
+                types="text"
                 label="Brand"
                 name="brand"
-                placholder="Product brand"
-                onChange={handleChange}
+                placeholder="Product Brand"
+                OnChanges={handleChange}
               />
               <AdminInput
-                type="text"
+                types="text"
                 label="Sku"
                 name="sku"
-                placholder="Product sku/ number"
-                onChange={handleChange}
+                placeholder="Product Sku / number"
+                OnChanges={handleChange}
               />
               <AdminInput
-                type="text"
+                types="text"
                 label="Discount"
                 name="discount"
-                placholder="Product discount"
-                onChange={handleChange}
+                placeholder="Product Discount"
+                OnChanges={handleChange}
               />
-              {/* <Sizes
-                sizes={product.sizes}
-                product={product}
+          {/* <Images  
+                name = "imageDescInputFile"
+                header=" Product Description Image"
+                text= "Add images"
+                images={description_images}
+                setImages= {setDescription_images}
+                setColorImage= {setColorImage}
+              /> 
+              <Sizes  
+                sizes= {product.sizes}
+                product= {product}
                 setProduct={setProduct}
               />
-              <Details
-                details={product.details}
-                product={product}
+              <Details  
+                sizes= {product.details}
+                product= {product}
                 setProduct={setProduct}
               />
-              <Questions
-                questions={product.questions}
-                product={product}
+              <Questions  
+                sizes= {product.questions}
+                product= {product}
                 setProduct={setProduct}
-              /> */}
-             <button
-              className={`${styles.btn} ${styles.btn__primary} ${styles.submit_btn}`}
-              type="submit"
-            >
-              Create Product
-            </button>
+              />
+          */}
+            <button className={styles.btn} types="submit">Create Product</button>
           </Form>
         )}
       </Formik>

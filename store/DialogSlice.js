@@ -2,13 +2,22 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   show: false,
-  header: "",
-  msgs: [],
+  header: "Error creating product",
+  msgs: [
+    {
+      msg: "Choose atleast 2 images.",
+      type: "error",
+    },
+    {
+      msg: "Choose atleast 2 images.",
+      type: 'error',
+    },
+  ],
   link: {
     link: "",
     link_text: "",
   },
-};
+}; 
 
 export const DialogSlice = createSlice({
   name: "dialog",

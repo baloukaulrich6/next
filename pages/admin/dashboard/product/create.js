@@ -4,6 +4,7 @@ import db from "../../../../utils/db";
 import Product from "../../../../models/Product";
 import Category from "../../../../models/Category";
 import { useEffect, useState } from "react";
+import {toast} from "react-toastify"
 import axios from "axios";
 import { Form, Formik } from "formik";
 import * as Yup from "yup";
@@ -19,7 +20,9 @@ import Questions from "../../../../components/admin/createProduct/clickToAdd/Que
 import { showDialog } from "../../../../store/DialogSlice";
 import { validateCreateProduct } from "../../../../utils/validation";
 import { useDispatch } from "react-redux";
+import { uploadImages } from "../../../../request/upload";
 import DialogModal from "../../../../components/dialogModal";
+import dataURItoBlob from "../../../../utils/dataURItoBlob";
 const initialState = {
   name: "",
   description: "",
@@ -32,8 +35,8 @@ const initialState = {
   category: "",
   subCategories: [],
   color: {
-    color: {},
     image: "",
+    color: "",
   },
   sizes: [
     {
@@ -101,8 +104,7 @@ export default function create({ categories, parents }) {
     name: Yup.string()
     .required('Please Add a name')
     .min(4, "product name must beateen and 5 and 300 characters.")
-    .max(300, "product name must beateen and 5 and 300 characters.")
-    .min(10, "product name must beateen and 5 and 300 characters."),
+    .max(300, "product name must beateen and 5 and 300 characters."),
     brand: Yup.string().required('Please Add a brand'),
     category: Yup.string().required('Please Add a category'),
     // subCategories: Yup.array().min(1,'Please select atleast one sub Categories'),
@@ -121,8 +123,48 @@ export default function create({ categories, parents }) {
       }))
     }
   };
+  const uploaded_image=[]
+  const style_img = "";
   const createProductHandler = async () =>{
+    setLoading(true);
+    if(images){
+      let temp = images.map((img) =>{
+        return dataURItoBlob(img)
+      });
+      const path = "product images";
+      let formData = new FormData()
+      formData.append("path", path)
+      temp.forEach((image) =>{
+        formData.append('file', image)
+      })
+      uploaded_image = await uploadImages(formData);
+    }
+    if(product.color.image){
+      let temp = dataURItoBlob(product.color.image);
+      let path = "product  styles images";
+      let formData = new FormData();
+      formData.append("path", path)
+      formData.append("file", temp) 
+      let cloudinary_style_img = await uploadImages(formData);
+      style_img = cloudinary_style_img[0].url;
 
+    }
+   try{
+    const {data} = await axios.post("/api/admin/product", {
+      ...product,
+      images: uploaded_image,
+      color: {
+        image: style_img,
+        color: product.color.color
+      }
+    })
+    setLoading(false)
+    toast.success(data.message)
+   }catch(error){
+    setLoading(false)
+    toast.error(error.response.data.message)
+    console.log(error.response.data.message)
+   }
   }
   return (
     <Layout>
@@ -214,41 +256,41 @@ export default function create({ categories, parents }) {
               )}
               <div className={styles.header}>Basic Infos</div>
               <AdminInput
-                types="text"
+                type="text"
                 label="Name"
                 name="name"
                 placeholder="Product name"
-                OnChanges={handleChange}
+                onChange={handleChange}
               />
               <AdminInput
-                types="text"
+                type="text"
                 label="Description"
                 name="description"
                 placeholder="Product description"
-                OnChanges={handleChange}
+                onChange={handleChange}
               />
               <AdminInput
-                types="text"
+                type="text"
                 label="Brand"
                 name="brand"
                 placeholder="Product Brand"
-                OnChanges={handleChange}
+                onChange={handleChange}
               />
               <AdminInput
-                types="text"
+                type="text"
                 label="Sku"
                 name="sku"
                 placeholder="Product Sku / number"
-                OnChanges={handleChange}
+                onChange={handleChange}
               />
               <AdminInput
-                types="text"
+                type="text"
                 label="Discount"
                 name="discount"
                 placeholder="Product Discount"
-                OnChanges={handleChange}
+                onChange={handleChange}
               />
-
+  
             {/* <Images  
                 name = "imageDescInputFile"
                 header=" Product Description Image"

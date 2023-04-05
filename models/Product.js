@@ -97,7 +97,7 @@ const productSchema = new mongoose.Schema(
         description_images: [],
         color: {
           color: {
-            type: String,
+            type: [],
           },
           image: {
             type: String,

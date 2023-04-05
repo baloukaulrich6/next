@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { BsFillPatchMinusFill, BsFillPatchPlusFill } from "react-icons/bs";
-//import { sizesList } from "../../../../data/sizes";
+import { sizesList } from "../../../../data/sizes";
 import styles from "./styles.module.scss";
 
 export default function Details({ details, product, setProduct }) {

@@ -32,7 +32,7 @@ const initialState = {
   category: "",
   subCategories: [],
   color: {
-    color: "",
+    color: {},
     image: "",
   },
   sizes: [
@@ -105,13 +105,25 @@ export default function create({ categories, parents }) {
     .min(10, "product name must beateen and 5 and 300 characters."),
     brand: Yup.string().required('Please Add a brand'),
     category: Yup.string().required('Please Add a category'),
-    subCategories: Yup.array().min(1,'Please select atleast one sub Categories'),
+    // subCategories: Yup.array().min(1,'Please select atleast one sub Categories'),
     sku: Yup.string().required('Please Add a sku / number'),
     color: Yup.string().required('Please Add a color'),
     description: Yup.string().required('Please Add a description'),
   });
-  const createProduct = async () => {};
- 
+  const createProduct = async () => {
+    let test = validateCreateProduct(product, images);
+    if(test == "valid"){
+      createProductHandler()
+    } else{
+      dispatch(showDialog({
+        header: "please follow our instruction",
+        msgs: test
+      }))
+    }
+  };
+  const createProductHandler = async () =>{
+
+  }
   return (
     <Layout>
       <div className={styles.header}>Create Product</div>
@@ -126,7 +138,7 @@ export default function create({ categories, parents }) {
           parent: product.parent,
           sku: product.sku,
           discount: product.discount,
-          color: product.color,
+          color: product.color.color,
           imageInputFile: "",
           stylesInput: "",
         }}
@@ -236,31 +248,32 @@ export default function create({ categories, parents }) {
                 placeholder="Product Discount"
                 OnChanges={handleChange}
               />
-          {/* <Images  
+
+            {/* <Images  
                 name = "imageDescInputFile"
                 header=" Product Description Image"
                 text= "Add images"
                 images={description_images}
                 setImages= {setDescription_images}
                 setColorImage= {setColorImage}
-              /> 
+              />  */}
+              
               <Sizes  
                 sizes= {product.sizes}
                 product= {product}
                 setProduct={setProduct}
               />
               <Details  
-                sizes= {product.details}
+                details= {product.details}
                 product= {product}
                 setProduct={setProduct}
               />
               <Questions  
-                sizes= {product.questions}
+                questions= {product.questions}
                 product= {product}
                 setProduct={setProduct}
               />
-          */}
-            <button className={styles.btn} types="submit">Create Product</button>
+            <button className={`${styles.btn} ${styles.btn__primary} ${styles.submit_btn}`} types="submit">Create Product</button>
           </Form>
         )}
       </Formik>

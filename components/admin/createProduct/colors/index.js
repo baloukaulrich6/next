@@ -28,7 +28,7 @@ export default function Colors({
       >
         {color}
       </div>
-    ));
+    )); 
   };
 
   return (

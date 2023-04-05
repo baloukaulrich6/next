@@ -160,20 +160,19 @@ export default function create({ categories, parents }) {
                 ></span>
               )}
             </div>
-              {/* 
-            <Colors
+             <Colors
               name= "color"
               product = {product}
               setProduct={setProduct}
               colorImage={colorImage}  
-            />
+            /> 
             <Style
               name= "styleInput"
               product = {product}
               setProduct={setProduct}
               colorImage={colorImage}  
             />
-            */}
+           
               <SingularSelect
                 name="parent"
                 value={product.parent}

@@ -7,7 +7,7 @@ import List from "../../../components/admin/coupons/List"
 
 export default function coupons({coupons}){
     const [data, setData] = useState(coupons)
-    console.log(data)
+   
   return (
     <div>
         <Layout>

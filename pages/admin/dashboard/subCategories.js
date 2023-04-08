@@ -8,7 +8,7 @@ import List from "../../../components/admin/subCategories/List"
 
 export default function subCategories({ categories, subCategories }) {
     const [data, setData] = useState(subCategories);
-    console.log(data);
+   
     return (
       <Layout>
         <div>

@@ -16,7 +16,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 export default function DialogModal({ type }) {
   const dispatch = useDispatch();
   const { dialog } = useSelector((state) => ({ ...state }));
-  
+  const test = dialog.msgs.find((x) => x.type== "error")
 
   const handleClose = () => {
     dispatch(hideDialog());
@@ -39,7 +39,7 @@ export default function DialogModal({ type }) {
         fullWidth={true}
       >
         <DialogTitle
-          className={`${styles.header} ${styles.dialog_success}`}
+          className={`${styles.header} ${!test ? styles.dialog_success: ""}`}
         >
         {dialog.header}
         </DialogTitle>

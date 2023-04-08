@@ -3,14 +3,13 @@ import { useState } from "react";
 import { useRef } from "react";
 import { AiTwotoneEdit, AiFillDelete } from "react-icons/ai";
 import { toast } from "react-toastify";
-import axios from "axios";
-
+import axios from "axios"
+ 
 export default function ListItem({
     categories, 
     subCategory,
     setSubCategories,
   }) {
-    console.log("sub", subCategory);
     const [open, setOpen] = useState(false);
     const [name, setName] = useState("");
     const [parent, setParent] = useState("");

@@ -15,7 +15,7 @@ export default async function middleware(req) {
     secret: process.env.JWT_SECRET,
     secureCookie: process.env.NODE_ENV === "production",
   });
-  console.log(session); // Affichage de la variable session dans la console
+  ; // Affichage de la variable session dans la console
 
   if (pathname == "/checkout") { 
     // Vérification si la propriété pathname est égale à "/checkout"

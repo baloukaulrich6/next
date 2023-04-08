@@ -1,5 +1,7 @@
-import Link from "next/Link";
+
+
 import { simillar_products } from "../../../data/products";
+import Link from 'next/link'
 import styles from "./styles.module.scss";
 import { useRef, useState } from "react";
 // Import Swiper React components

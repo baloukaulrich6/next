@@ -31,7 +31,7 @@ const initialValues = {
   country: "",
 };
 
-export default function Shipping({ addresses, setAddresses, user }) {
+export default function Shipping({ addresses, setAddresses, user, profile}) {
   const [shipping, setShipping] = useState(initialValues);
   const [visible, setVisible] = useState(user?.address.length ? false : true);
   const {
@@ -100,9 +100,11 @@ export default function Shipping({ addresses, setAddresses, user }) {
   };
   return (
     <div className={styles.shipping}>
-      <div className={styles.header}>
-        <h3>Shipping Information</h3>
-      </div>
+     {!profile && (
+        <div className={styles.header}>
+          <h3>Shipping Informations</h3>
+        </div>
+      )}
       <div className={styles.addresses}>
         {addresses.map((address) => (
           <div style={{position: "relative"}}>
@@ -118,8 +120,8 @@ export default function Shipping({ addresses, setAddresses, user }) {
               key={address._id}
               onClick={() => changeActiveHandler(address._id)}
             >
-              <div className={styles.address__side}>
-                <img src={user.image}></img>
+             <div className={styles.address__side}>
+                <img src={profile ? user.user.image : user.image} alt="" />
               </div>
               <div className={styles.address__col}>
                 <span>

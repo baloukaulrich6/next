@@ -7,7 +7,6 @@ export const paymentMethods = [
     images: [
       "visa",
       "mastercard",
-
     ],
   },
   {

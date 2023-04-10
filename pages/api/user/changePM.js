@@ -4,18 +4,18 @@ import db from "../../../utils/db";
 import auth from "../../../middleware/auth";
 const handler = nc().use(auth);
 
-handler.post(async (req, res) => {
+handler.put(async (req, res) => {
   try {
     db.connectDb();
-    const { address } = req.body;
+    const { paymentMethod } = req.body;
     const user = await User.findById(req.user);
     await user.updateOne({
-      $push: {
-        address: address,
-      },
+      defaultPaymentMethod: paymentMethod
+    }, {
+      returnOriginal: false 
     });
     db.disconnectDb();
-    return res.json({ addresses: user.address });
+    return res.json({ paymentMethod: user.defaultPaymentMethod });
   } catch (error) {
     return res.status(500).json({ message: error.message });
   }

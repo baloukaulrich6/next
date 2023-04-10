@@ -10,7 +10,7 @@ handler.post(async (req, res) =>{
     try{
         db.connectDb()
         const {coupon} = req.body
-        const user = User.findById(req.user)
+        const user = await User.findById(req.user)
         const checkCoupon = await Coupon.findOne({coupon})
         if(checkCoupon == null){
             return res.json({message: "Invalid coupon"})

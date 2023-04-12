@@ -104,7 +104,7 @@ export default function Shipping({ addresses, setAddresses, user, profile}) {
         <div className={styles.header}>
           <h3>Shipping Informations</h3>
         </div>
-      )}
+      )} 
       <div className={styles.addresses}>
         {addresses.map((address) => (
           <div style={{position: "relative"}}>

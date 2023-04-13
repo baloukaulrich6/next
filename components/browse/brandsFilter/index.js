@@ -4,7 +4,7 @@ import { BsPlusLg } from "react-icons/bs";
 import { FaMinus } from "react-icons/fa";
 
 
-export default function Brands({ brands }) {
+export default function Brands({ brands, brandHandler }) {
   const [show, setShow] = useState(true);
   return (
     <div className={styles.filter}>
@@ -15,7 +15,10 @@ export default function Brands({ brands }) {
       {show && (
         <div className={styles.filter__sizes}>
           {brands.map((brand, i) => (
-           <button className={styles.filter__brand}>
+           <button 
+              className={styles.filter__brand}
+              onClick={() => brandHandler(brand)}
+           >
               <img src={`../../../images/brands/${brand}.png`}/>
            </button>
           ))}

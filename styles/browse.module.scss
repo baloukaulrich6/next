@@ -3,12 +3,18 @@
     max-width: 97%;
     margin: 0 auto;
     min-height: 100vh;
+    @media only screen and (max-width: 768px) {
+      padding: 0 20px;
+    }
   }
   &__store {
     display: grid;
     grid-template-columns: 300px 1fr;
     gap: 1rem;
     margin-top: 2rem;
+    @media only screen and (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
     &_filters {
       position: relative;
       width: 100%;
@@ -25,6 +31,14 @@
         left: 50%;
         transform: translateX(-50%);
         background: #ccc;
+      }
+      @media only screen and (max-width: 768px) {
+        position: static;
+        height: auto;
+        padding: 0;
+        &:before {
+          display: none;
+        }
       }
     }
     &_products {
@@ -66,6 +80,11 @@
         border-color: #000;
       }
     }
+    @media only screen and (max-width: 768px) {
+      a {
+        width: 100%;
+      }
+    }
   }
 }
 .pagination {
@@ -74,6 +93,9 @@
   align-items: center;
   justify-content: flex-end;
   padding: 2rem;
+  @media only screen and (max-width: 768px) {
+    padding: 1rem;
+  }
 }
 .fixed {
   position: relative;
@@ -83,10 +105,22 @@
     top: 2rem;
     left: 1.8rem;
     width: 300px;
+    @media only screen and (max-width: 768px) {
+      position: static;
+      width: 100%;
+      left: 0;
+      margin-bottom: 1rem;
+    }
   }
   .browse__store_products_wrap {
     position: absolute;
     top: 2rem;
     left: 316px;
+    width: calc(100% - 316px);
+    @media only screen and (max-width: 768px) {
+      position: static;
+      width: 100%;
+      left: 0;
+    }
   }
 }

@@ -2,9 +2,11 @@ import { useState } from "react";
 import styles from "../styles.module.scss";
 import { BsPlusLg } from "react-icons/bs";
 import { FaMinus } from "react-icons/fa";
+import { useRouter } from "next/router";
 
 
-export default function StyleFilter({ data }) {
+export default function StyleFilter({ data, styleHandler }) {
+  const router = useRouter()
   const [show, setShow] = useState(true);
   return (
     <div className={styles.filter}>
@@ -16,7 +18,9 @@ export default function StyleFilter({ data }) {
         {data.map((style, i) => {
           return (
             <div
-              className={styles.filter__sizes_size}>
+              className={styles.filter__sizes_size}
+              onClick={() =>styleHandler(style)}
+              >  
               <input
                 type="checkbox"
                 name="style"

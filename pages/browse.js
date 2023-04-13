@@ -20,6 +20,7 @@ import PatternsFilter from '../components/browse/patternsFilter';
 import MaterialsFilter from '../components/browse/materialsFilter';
 import GenderFilter from '../components/browse/genderFilter';
 import HeadingFilters from '../components/browse/HeadingFilter';
+import { useRouter } from 'next/router';
 export default function browse({
     categories,
     subCategories, 
@@ -30,11 +31,44 @@ export default function browse({
     stylesData,
     patterns,
     materials
-
+ 
 }){
+    const router = useRouter()
+    const filter= ({search,category, brand, style}) =>{
+        const path = router.pathname;
+        const {query} = router
+        if(search) query.search = search
+        if(category) query.category = category
+        if(brand) query.brand = brand
+        if(style) query.style = style
+        router.push({
+            pathname: path,
+            query: query
+        });
+    }
+    const searchHandler = (search) =>{
+        if(search == ""){
+            filter({search: {}})
+        }else{
+            filter({search})
+        }
+        
+    } 
+    const categoryHandler = (category) =>{
+        filter({category})
+        
+    }
+    const brandHandler = (style) =>{
+        filter({style})
+        
+    }
+    const styleHandler = (brand) =>{
+        filter({brand})
+        
+    }
     return(
         <div className={styles.browse}>
-            <Header country/>
+            <Header country searchHandler={searchHandler}/>
             <div className={styles.browse__container}>
                 <div className={styles.browse__path}>
                     Home / Browse
@@ -52,11 +86,12 @@ export default function browse({
                       <CategoryFilter 
                             categories={categories}
                             subCategories={subCategories}
+                            categoryHandler = {categoryHandler}
                       />
                       <SizesFilter sizes={sizes}/>
                       <ColoFilter colors={colors}/>
-                      <Brands brands ={brands}/>
-                      <StyleFilter data={stylesData}/>
+                      <Brands brands ={brands} brandHandler={brandHandler}/>
+                      <StyleFilter data={stylesData} styleHandler={styleHandler}/>
                       <PatternsFilter patterns={patterns}/>
                       <MaterialsFilter materials={materials}/>
                       <GenderFilter />
@@ -78,8 +113,44 @@ export default function browse({
 }
 
 export async function getServerSideProps(ctx){
+    const {query} = ctx
+    //---------------------------------------------------------->
+    const searchQuery = query.search || ""
+    const categoryQuery = query.category || ""
+    const brandQuery = query.brand || ""
+    const styleQuery = query.style.split("_") || ""
+    //---------------------------------------------------------->
+    const search = searchQuery && searchQuery !== "" ? {
+        name : {
+        $regex: searchQuery,
+        $options: "i"
+    }
+    }:{}
+    const category = categoryQuery && categoryQuery !== "" ? {
+        category : categoryQuery
+    }: {}
+    const brand = brandQuery && brandQuery !== "" ? {
+        brand : brandQuery
+    }: {}
+    const style = styleQuery && styleQuery !== "" ? {
+        "details.value" : {
+        $regex: styleQuery,
+        $options: "i"
+    }
+    }:{}
+
+    //---------------------------------------------------------->
+
+    //---------------------------------------------------------->
+
+    
     db.connectDb()
-    let productsDb = await Product.find().sort({createdAt: -1}).lean();
+    let productsDb = await Product.find({
+        ...search, 
+        ...category, 
+        ...brand,
+        ...style
+    }).sort({createdAt: -1}).lean();
     let categories = await  Category.find().lean();
     let products = randomize(productsDb)
     let subCategories = await  SubCategory.find().populate({
@@ -87,10 +158,10 @@ export async function getServerSideProps(ctx){
         model: Category,
     })
     .lean()
-    let colors = await Product.find().distinct("subProducts.color.color")
-    let brandsDb = await Product.find().distinct('brand');
-    let sizes = await Product.find().distinct("subProducts.sizes.size")
-    let details = await Product.find().distinct("details")
+    let colors = await Product.find({...category}).distinct("subProducts.color.color")
+    let brandsDb = await Product.find({...category}).distinct('brand');
+    let sizes = await Product.find({...category}).distinct("subProducts.sizes.size")
+    let details = await Product.find({...category}).distinct("details")
     let stylesDb = filterArray(details, "Style")
     let patterDb = filterArray(details, "Pattern Type")
     let materialDb = filterArray(details, "Material")

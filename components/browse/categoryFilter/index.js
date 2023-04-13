@@ -4,7 +4,10 @@ import { BsPlusLg } from 'react-icons/bs'
 import { FaMinus } from 'react-icons/fa'
 import Card from './Card'
 
-export default function CategoryFilter({categories, subCategories}) {
+export default function CategoryFilter({
+    categories, 
+    subCategories, 
+    categoryHandler}) {
     const [show, setShow] = useState(true)
     return (
     <div className={styles.filter}>
@@ -14,7 +17,12 @@ export default function CategoryFilter({categories, subCategories}) {
         </h3>
         {
             show &&  categories.map((category, i) => (
-            <Card key={i} category={category} subCategories={subCategories}/>))
+            <Card 
+                key={i} 
+                category={category} 
+                subCategories={subCategories}
+                categoryHandler = {categoryHandler}
+            />))
         }
     </div>
   )

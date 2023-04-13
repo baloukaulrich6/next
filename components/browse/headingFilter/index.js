@@ -17,7 +17,7 @@ export default function HeadingFilters() {
         <div className={styles.filers__priceBtns}>
         <Tooltip
           title={<h2>Check out products under 10$</h2>}
-        >
+        > 
           <button className={styles.tooltip_btn}>
             <span style={{ height: "10%" }}></span>
           </button>

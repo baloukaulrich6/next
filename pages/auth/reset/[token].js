@@ -5,7 +5,7 @@ import Footer from "../../../components/footer";
 import Header from "../../../components/header";
 import styles from "../../../styles/forgot.module.scss";
 import CircleIconBtn from "../../../components/buttons/circleIconBtn";
-import { useState } from "react";
+import React,{ useState } from "react";
 import * as Yup from 'yup'
 import LoginInput from "../../../components/inputs/loginInput";
 import axios from "axios";

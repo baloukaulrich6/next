@@ -3,7 +3,7 @@ import Layout from '../../components/profile/layout';
 import User from "../../models/User"
 import Shipping from '../../components/checkout/shipping'
 import styles from "../../styles/profile.module.scss"
-import { useState } from 'react';
+import React,{ useState } from 'react';
 export default function index({user, tab}) {
     const [addresses, setAddresses] = useState(user.address.address)
   return (

@@ -4,7 +4,7 @@ import Header from "../../components/header";
 import styles from "../../styles/order.module.scss";
 import { IoIosArrowForward } from "react-icons/io";
 import db from "../../utils/db";
-import { useReducer, useEffect } from "react";
+import React,{ useReducer, useEffect } from "react";
 import { getSession } from "next-auth/react";
 import StripePayment from "../../components/stripePayment/index";
 

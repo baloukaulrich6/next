@@ -6,7 +6,7 @@ import Link from "next/link";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import LoginInput from "../components/inputs/loginInput/index";
-import { useState } from "react";
+import React,{ useState } from "react";
 import {
   getCsrfToken,
   getProviders,

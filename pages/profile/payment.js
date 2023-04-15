@@ -2,7 +2,7 @@ import {getSession} from 'next-auth/react'
 import Layout from '../../components/profile/layout';
 import styles from "../../styles/profile.module.scss"
 import User from "../../models/User"
-import { useState } from 'react';
+import React,{ useState } from 'react';
 import Payment from '../../components/checkout/payment'
 import axios from 'axios';
 export default function index({user, tab, defaultPaymentMethod}) {

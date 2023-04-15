@@ -7,7 +7,7 @@ import Footer from "../../components/footer";
 import Category from "../../models/Category";
 import SubCategory from "../../models/SubCategory";
 import MainSwiper from "../../components/productPage/MainSwiper";
-import { useState } from "react";
+import React,{ useState } from "react";
 import Infos from "../../components/productPage/infos";
 import Reviews from "../../components/productPage/reviews";
 import User from "../../models/User";

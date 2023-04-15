@@ -6,7 +6,7 @@ import styles from "../styles/cart.module.scss"
 import CartHeader from "../components/cart/cartHeader";
 import { useRouter } from "next/router";
 import { signIn, useSession } from "next-auth/react";
-import { useEffect, useState } from "react";
+import React,{ useEffect, useState } from "react";
 import Checkout from "../components/cart/checkout"; 
 import PaymentMethods from "../components/cart/paymentMethods";
 import ProductsSwiper from "../components/productsSwiper";

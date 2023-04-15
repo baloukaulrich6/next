@@ -4,7 +4,7 @@ import Head from 'next/head';
 import * as Yup from "yup";
 import { Formik, Form } from "formik";
 import styles from "../../styles/profile.module.scss"
-import { useState } from 'react';
+import React,{ useState } from 'react';
 import CircleIconBtn from '../../components/buttons/circleIconBtn';
 import LoginInput from '../../components/inputs/loginInput';
 import axios from 'axios';

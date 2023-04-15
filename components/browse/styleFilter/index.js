@@ -7,6 +7,7 @@ import { useRouter } from "next/router";
 
 export default function StyleFilter({ data, styleHandler }) {
   const router = useRouter()
+  const existedStyle = router.query.style || "";
   const [show, setShow] = useState(true);
   return (
     <div className={styles.filter}>

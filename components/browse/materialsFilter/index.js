@@ -6,9 +6,11 @@ import styles from "../styles.module.scss";
 
 export default function MaterialsFilter({
   materials,
-
+  materialHandler
 }) {
-  const [show, setShow] = useState(true); 
+  const [show, setShow] = useState(true);
+  const router = useRouter()
+  const existedMaterial = router.query.material || ""; 
   return (
     <div className={styles.filter}>
       <h3>
@@ -21,6 +23,9 @@ export default function MaterialsFilter({
               <label
                 htmlFor={material}
                 className={styles.filter__sizes_size}
+                onClick={() =>
+                  materialHandler(existedMaterial ? `${existedMaterial}_${material}`: materials )
+                }
               >
                 <input
                   type="checkbox"

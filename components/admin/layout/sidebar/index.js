@@ -36,7 +36,7 @@ export default function Sidebar() {
         <div 
         className={styles.sidebar__toggle}
         onClick={() =>handlerExpand()}>
-            <div styles={{transform: `${expand ? "rotate(180deg)": ""}`,
+            <div style={{transform: `${expand ? "rotate(180deg)": ""}`,
             transition: " all .2s",
         }}>
                   <MdArrowForwardIos /> 

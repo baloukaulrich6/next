@@ -12,6 +12,8 @@ import {SlEye, SlHandbag} from "react-icons/sl"
 import {SiProducthunt} from "react-icons/si"
 import {GiTakeMyMoney} from "react-icons/gi"
 import Link from 'next/link'
+import React from 'react'
+
 export default function dashboard({ users, orders, products }) {
     const { data: session } = useSession();
     return (
@@ -93,7 +95,7 @@ export default function dashboard({ users, orders, products }) {
                   </tr>
                 </thead>
                 <tbody>
-                  {orders.map((order) => (
+                  {orders.map((order, i) => (
                     <tr>
                       <td>{order.user.name}</td>
                       <td>{order.total} $</td>

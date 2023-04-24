@@ -1,4 +1,4 @@
-import styles from "../../../styles/dashboard.module.scss";
+import styles from "../../../styles/Dashboard.module.scss";
 import Layout from "../../../components/admin/layout";
 import User from "../../../models/User"
 import Order from "../../../models/Order"

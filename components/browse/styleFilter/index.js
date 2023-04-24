@@ -19,6 +19,7 @@ export default function StyleFilter({ data, styleHandler }) {
         {data.map((style, i) => {
           return (
             <div
+            key={i}
               className={styles.filter__sizes_size}
               onClick={() =>styleHandler(style)}
               >  

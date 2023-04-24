@@ -23,6 +23,7 @@ export default function MaterialsFilter({
               <label
                 htmlFor={material}
                 className={styles.filter__sizes_size}
+                key={i}
                 onClick={() =>
                   materialHandler(existedMaterial ? `${existedMaterial}_${material}`: materials )
                 }

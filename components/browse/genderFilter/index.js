@@ -16,6 +16,7 @@ export default function GenderFilter({ ganderHandler, replaceQuery }) {
           {genders.map((gender, i) => {
             return (
               <label
+              key={i}
                 htmlFor={gender}
                 className={styles.filter__sizes_size}
                 onClick={() => ganderHandler(gender)}

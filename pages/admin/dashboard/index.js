@@ -14,8 +14,11 @@ import {GiTakeMyMoney} from "react-icons/gi"
 import Link from 'next/link'
 import React from 'react'
 
-export default function dashboard({ users, orders, products }) {
+
+
+export default function Dashboard({ users, orders, products }) {
     const { data: session } = useSession();
+    
     return (
       <div>
         <Head>
@@ -96,7 +99,7 @@ export default function dashboard({ users, orders, products }) {
                 </thead>
                 <tbody>
                   {orders.map((order, i) => (
-                    <tr>
+                   <tr key={order._id}>
                       <td>{order.user.name}</td>
                       <td>{order.total} $</td>
                       <td>
@@ -143,7 +146,7 @@ export default function dashboard({ users, orders, products }) {
               <table>
                 <tbody>
                   {users.map((user) => (
-                    <tr>
+                    <tr key={user._id}>
                       <td className={styles.user}>
                         <div className={styles.user__img}>
                           <img src={user.image} alt="" />

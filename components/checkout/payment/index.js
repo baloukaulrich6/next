@@ -26,8 +26,8 @@ export default function Payment({setPaymentMethod, paymentMethod, profile}){
                             <p>
                                 {
                                     pm.images.length > 0
-                                    ? pm.images.map((img) =>
-                                        <img src={`../../../images/payment/${img}.PNG`} alt=""/>
+                                    ? pm.images.map((img, i) =>
+                                        <img key={i} src={`../../../images/payment/${img}.PNG`} alt=""/>
                                     ): pm.description
                                 }
                             </p>

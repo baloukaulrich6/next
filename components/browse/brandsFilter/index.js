@@ -18,6 +18,7 @@ export default function Brands({ brands, brandHandler }) {
            <button 
               className={styles.filter__brand}
               onClick={() => brandHandler(brand)}
+              key={i}
            >
               <img src={`../../../images/brands/${brand}.png`}/>
            </button>

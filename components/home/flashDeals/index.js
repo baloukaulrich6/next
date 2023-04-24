@@ -49,8 +49,8 @@ export default function FlashDeals() {
       >
         <div className={styles.flashDeals__list}>
           {flashDealsArray.map((product, i) => (
-            <SwiperSlide>
-              <FlashCard product={product} key={i} />
+            <SwiperSlide key={i} >
+              <FlashCard product={product} />
             </SwiperSlide>
           ))}
         </div>

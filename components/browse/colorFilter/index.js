@@ -19,6 +19,7 @@ export default function ColoFilter({ colors , colorHandler}) {
         <div className={styles.filter__colors}>
           {colors.map((color, i) => (
             <button style={{background: `${color}`}} 
+            key={i}
             onClick={() =>
               colorHandler(existedColor ? `${existedColor}_${color}`: color )
             }></button>

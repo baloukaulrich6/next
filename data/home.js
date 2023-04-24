@@ -46,11 +46,11 @@ export const offersArray = [
   export const menuArray = [
     {
       name: "Women's Fashion",
-      link: "",
+      link: "/browse",
       subMenu: [
         {
           name: "",
-          link: "",
+          link: "/browse",
         },
       ],
       brands: [],
@@ -58,11 +58,11 @@ export const offersArray = [
     },
     {
       name: "Men's Fashion",
-      link: "",
+      link: "/browse",
       subMenu: [
         {
           name: "",
-          link: "",
+          link: "/browse",
         },
       ],
       brands: [],
@@ -70,11 +70,11 @@ export const offersArray = [
     },
     {
       name: "Electronics",
-      link: "",
+      link: "/browse",
       subMenu: [
         {
           name: "",
-          link: "",
+          link: "/browse",
         },
       ],
       brands: [],
@@ -82,11 +82,11 @@ export const offersArray = [
     },
     {
       name: "Jewlery & Watches",
-      link: "",
+      link: "/browse",
       subMenu: [
         {
           name: "",
-          link: "",
+          link: "/browse",
         },
       ],
       brands: [],
@@ -94,11 +94,11 @@ export const offersArray = [
     },
     {
       name: "Home, Pet & Appliances",
-      link: "",
+      link: "/browse",
       subMenu: [
         {
           name: "",
-          link: "",
+          link: "/browse",
         },
       ],
       brands: [],
@@ -106,11 +106,11 @@ export const offersArray = [
     },
     {
       name: "Beauty, Health & Hair",
-      link: "",
+      link: "/browse",
       subMenu: [
         {
           name: "",
-          link: "",
+          link: "/browse",
         },
       ],
       brands: [],
@@ -119,11 +119,11 @@ export const offersArray = [
   
     {
       name: "Shoes,Sneakers,Heels",
-      link: "",
+      link: "/browse",
       subMenu: [
         {
           name: "",
-          link: "",
+          link: "/browse",
         },
       ],
       brands: [],
@@ -132,11 +132,11 @@ export const offersArray = [
   
     {
       name: "Accessories",
-      link: "",
+      link: "/browse",
       subMenu: [
         {
           name: "",
-          link: "",
+          link: "/browse",
         },
       ],
       brands: [],
@@ -145,11 +145,11 @@ export const offersArray = [
   
     {
       name: "Sports & Entertainment ",
-      link: "",
+      link: "/browse",
       subMenu: [
         {
           name: "",
-          link: "",
+          link: "/browse",
         },
       ],
       brands: [],
@@ -157,11 +157,11 @@ export const offersArray = [
     },
     {
       name: "Kids & Babies",
-      link: "",
+      link: "/browse",
       subMenu: [
         {
           name: "",
-          link: "",
+          link: "/browse",
         },
       ],
       brands: [],
@@ -169,11 +169,11 @@ export const offersArray = [
     },
     {
       name: "Movies & Television",
-      link: "",
+      link: "/browse",
       subMenu: [
         {
           name: "",
-          link: "",
+          link: "/browse",
         },
       ],
       brands: [],
@@ -181,23 +181,23 @@ export const offersArray = [
     },
     {
       name: "Gaming, Video Games",
-      link: "",
+      link: "/browse",
       subMenu: [
         {
           name: "",
-          link: "",
+          link: "/browse",
         },
       ],
       brands: [],
       images: [],
     },
     {
-      name: "Phones & Telecommunications",
-      link: "",
+      name: "Phones & Accessory",
+      link: "/browse",
       subMenu: [
         {
           name: "",
-          link: "",
+          link: "/browse",
         },
       ],
       brands: [],
@@ -205,11 +205,11 @@ export const offersArray = [
     },
     {
       name: "Toys & Hobbies",
-      link: "",
+      link: "/browse",
       subMenu: [
         {
           name: "",
-          link: "",
+          link: "/browse",
         },
       ],
       brands: [],
@@ -217,11 +217,11 @@ export const offersArray = [
     },
     {
       name: "Gifts & Crafts",
-      link: "",
+      link: "/browse",
       subMenu: [
         {
           name: "",
-          link: "",
+          link: "/browse",
         },
       ],
       brands: [],
@@ -229,11 +229,11 @@ export const offersArray = [
     },
     {
       name: "Machinery",
-      link: "",
+      link: "/browse",
       subMenu: [
         {
           name: "",
-          link: "",
+          link: "/browse",
         },
       ],
       brands: [],
@@ -241,11 +241,11 @@ export const offersArray = [
     },
     {
       name: "Security, Safety",
-      link: "",
+      link: "/browse",
       subMenu: [
         {
           name: "",
-          link: "",
+          link: "/browse",
         },
       ],
       brands: [],
@@ -257,37 +257,37 @@ export const offersArray = [
     {
       image:
         "https://ae01.alicdn.com/kf/S8bf3306f6f7b4855b147862236a5a12dD/45MM-Transparent-Mod-Kit-Case-for-Apple-Watch-Band-7-45-44MM-Rubber-Sports-Watchband-for.jpg_220x220xz.jpg_.webp",
-      link: "",
+      link: "/browse",
     },
     {
       image:
         "https://ae01.alicdn.com/kf/Sdb42f04658cd4a9c82018e22e90a78a2X.jpg_220x220.webp_480x480Q90.webp",
-      link: "",
+      link: "/browse",
     },
     {
       image:
         "https://ae01.alicdn.com/kf/H5914a44106c44f4ca51280c4fcd0a3bfY.jpg_220x220.webp_480x480Q90.webp",
-      link: "",
+      link: "/browse",
     },
     {
       image:
         "https://ae01.alicdn.com/kf/H5b92665c4bae4160845d4d235586a41b7/Win10-OneGX1-Pro-Mini-Laptop-Gaming-7-inch-Notebook-Computer-Intel-i7-16G-RAM-512G-PICe.jpg_220x220xz.jpg_.webp",
-      link: "",
+      link: "/browse",
     },
     {
       image:
         "https://ae01.alicdn.com/kf/H01e60132bef1420a849fa84700ebae174.jpg_350x350.jpg_480x480Q90.webp",
-      link: "",
+      link: "/browse",
     },
     {
       image:
         "https://ae01.alicdn.com/kf/S714e9ef3689b4a31954f2d180d4938c9u.jpg_220x220.webp_480x480Q90.webp",
-      link: "",
+      link: "/browse",
     },
     {
       image:
         "https://ae01.alicdn.com/kf/S31f6384cf5ae41da86f9554615e7e392E.jpg_220x220.webp_480x480Q90.webp",
-      link: "",
+      link: "/browse",
     },
   ];
   
@@ -297,7 +297,7 @@ export const offersArray = [
         "https://img.ltwebstatic.com/images3_pi/2022/09/15/1663220709c947ca4ad9aefd9c1f4baf5915653468_thumbnail_600x.webp",
       price: "91",
       discount: "11",
-      link: "",
+      link: "/browse",
       sold: "30",
     },
     {
@@ -305,7 +305,7 @@ export const offersArray = [
         "https://img.ltwebstatic.com/images3_pi/2022/09/20/1663668243e6d8f250648c2f34988320c046cba68f_thumbnail_405x552.webp",
       price: "73",
       discount: "25",
-      link: "",
+      link: "/browse",
       sold: "61",
     },
     {
@@ -313,7 +313,7 @@ export const offersArray = [
         "https://img.ltwebstatic.com/images3_pi/2022/03/25/164818761997d2ccb1de50aed18da9d77502717405_thumbnail_405x552.webp",
       price: "254",
       discount: "36",
-      link: "",
+      link: "/browse",
       sold: "12",
     },
     {
@@ -321,7 +321,7 @@ export const offersArray = [
         "https://img.ltwebstatic.com/images3_pi/2022/05/13/165244123600952e503ccab89dd363c9b71f9094f8_thumbnail_405x552.webp",
       price: "1687",
       discount: "20",
-      link: "",
+      link: "/browse",
       sold: "96",
     },
     {
@@ -329,7 +329,7 @@ export const offersArray = [
         "https://img.ltwebstatic.com/images3_pi/2022/06/17/16554568735029a68267cacc48382e23027667093f_thumbnail_405x552.webp",
       price: "126",
       discount: "8",
-      link: "",
+      link: "/browse",
       sold: "12",
     },
     {
@@ -337,7 +337,7 @@ export const offersArray = [
         "https://img.ltwebstatic.com/images3_pi/2022/08/17/16607290552013caeedd00666350d71774fcd6e95f_thumbnail_405x552.webp",
       price: "65",
       discount: "7",
-      link: "",
+      link: "/browse",
       sold: "82",
     },
     {
@@ -345,7 +345,7 @@ export const offersArray = [
         "https://img.ltwebstatic.com/images3_pi/2022/09/02/166210785062f36a63bcecd00693783c4b6cd0c2a2_thumbnail_600x.webp",
       price: "41",
       discount: "9",
-      link: "",
+      link: "/browse",
       sold: "52",
     },
     {
@@ -353,7 +353,7 @@ export const offersArray = [
         "https://img.ltwebstatic.com/images3_pi/2022/09/01/1662028598b9164c30a8410fc9d71b81fc63748d4e_thumbnail_405x552.webp",
       price: "288",
       discount: "35",
-      link: "",
+      link: "/browse",
       sold: "49",
     },
   ];

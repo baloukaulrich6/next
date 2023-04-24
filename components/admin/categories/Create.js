@@ -11,10 +11,7 @@ export default function Create({setCategories}) {
     const validate = Yup.object({
         name: Yup.string().required('Category name is required')
         .min(3, "Category name must be between  3 and 20 character.")
-        .max(20, "Category name must be between  3 and 20 character.")
-        .matches(
-            /^[a-zA-Z\s]*$/,
-            "Numbers and special charcters are not allowed."),
+        .max(40, "Category name must be between  3 and 20 character.")
     })
     const submitHandler = async() =>{
         try{

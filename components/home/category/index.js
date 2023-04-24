@@ -13,8 +13,8 @@ export default function Category({header, products, background}) {
             <BsArrowRightCircle/>
         </div>
         <div  className={styles.category__products}>
-            {products.slice(0, isMedium ? 6 : isMobile ? 4 : 6).map((product) =>(
-                <div className={styles.product}><img src={product.image} alt="" /></div>
+            {products.slice(0, isMedium ? 6 : isMobile ? 4 : 6).map((product,i) =>(
+                <div key={i} className={styles.product}><img src={product.image} alt="" /></div>
             ))}
         </div>
     </div>

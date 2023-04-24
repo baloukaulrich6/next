@@ -59,7 +59,7 @@ const initialState = {
   ],
   shippingFee: "",
 };
-export default function create({ categories, parents }) {
+export default function Create({ categories, parents }) {
   const [product, setProduct] = useState(initialState);
   const [subs, setSubs] = useState([]);
   const [colorImage, setColorImage] = useState("");
@@ -315,7 +315,7 @@ export default function create({ categories, parents }) {
                 product= {product}
                 setProduct={setProduct}
               />
-            <button className={`${styles.btn} ${styles.btn__primary} ${styles.submit_btn}`} types="submit">Create Product</button>
+            <button className={`${styles.btn} ${styles.btn__primary} ${styles.submit_btn}`} type="submit">Create Product</button>
           </Form>
         )}
       </Formik>

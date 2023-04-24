@@ -9,7 +9,7 @@ import CircleIconBtn from '../../components/buttons/circleIconBtn';
 import LoginInput from '../../components/inputs/loginInput';
 import axios from 'axios';
 
-export default function index({user, tab}) {
+export default function Index({user, tab}) {
   const [current_password, SetCurrent_password] = useState("")
   const [password, SetPassword] = useState("")
   const [confirm_password, SetConfirm_password] = useState("")

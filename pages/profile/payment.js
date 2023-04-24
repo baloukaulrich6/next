@@ -5,7 +5,7 @@ import User from "../../models/User"
 import React,{ useState } from 'react';
 import Payment from '../../components/checkout/payment'
 import axios from 'axios';
-export default function index({user, tab, defaultPaymentMethod}) {
+export default function Index({user, tab, defaultPaymentMethod}) {
   const [dbPM, setDbPM] = useState(defaultPaymentMethod)
   const [paymentMethod, setPaymentMethod] = useState(defaultPaymentMethod)
   const [error, setError] = useState("")

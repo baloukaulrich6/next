@@ -1,4 +1,3 @@
-import React, { useRef } from "react";
 import React,{ useState } from "react";
 import styles from "./styles.module.scss";
 import { VscHome } from "react-icons/vsc";
@@ -11,7 +10,7 @@ import { AiFillMessage } from "react-icons/ai";
 import { BsPatchPlus } from "react-icons/bs";
 import { RiCoupon3Fill, RiSettingsLine } from "react-icons/ri";
 import Link from "next/link";
-const index = ({ userImage }) => {
+const Index = ({ userImage }) => {
   const [show, setShow] = useState(false);
 
   return (

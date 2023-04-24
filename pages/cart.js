@@ -12,7 +12,7 @@ import PaymentMethods from "../components/cart/paymentMethods";
 import ProductsSwiper from "../components/productsSwiper";
 import { women_swiper } from "../data/home";
 import {saveCard} from "../request/user"
-export default function cart() {
+export default function Cart() {
   const Router = useRouter();
   const { data: session } = useSession();
   const [selected, setSelected] = useState([]);
@@ -27,7 +27,7 @@ export default function cart() {
     setShippingFee(selected.reduce((a, c)=> a + Number(c.shipping ), 0).toFixed(2));
     setSubtotal(selected.reduce((a, c)=> a + c.price * c.qty, 0).toFixed(2))
     setTotal((selected.reduce((a, c)=> a + c.price * c.qty, 0)+ Number(shippingFee)).toFixed(2))
-  },[selected])
+  },[selected, shippingFee])
   const saveCardToDbHandler = async () =>{
     if(session){
       const res = saveCard(selected, );

@@ -11,7 +11,7 @@ import React,{ useState } from "react";
 import Infos from "../../components/productPage/infos";
 import Reviews from "../../components/productPage/reviews";
 import User from "../../models/User";
-export default function product({country, product }) {
+export default function SlugProduct({country, product }) {
     const [activeImg, setActiveImg] = useState("")
   return (
     <div>
@@ -27,7 +27,7 @@ export default function product({country, product }) {
           <div className={styles.path}>
             Home / {product.category.name}
             {product.subCategories.map((sub) => (
-              <span>/{sub.name}</span>
+              <span key={sub._id}>/{sub.name}</span>
             ))}
           </div>
           <div className={styles.product__main}>

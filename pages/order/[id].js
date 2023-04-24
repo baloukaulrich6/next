@@ -20,7 +20,7 @@ function reducer(state, action) {
       return { ...state, loading: false, success: false, error: false };
   }
 }
-export default function order({ orderData, stripe_public_key }) {
+export default function IdOrder({ orderData, stripe_public_key }) {
   const [dispatch] = useReducer(reducer, {
     loading: true,
     error: "",
@@ -178,7 +178,7 @@ export default function order({ orderData, stripe_public_key }) {
           </div>
           <div className={styles.order__actions}>
             <div className={styles.order__address}>
-              <h1>Customer's Order</h1>
+            <h1>Customer&rsquo;s Order</h1>
               <div className={styles.order__address_user}>
                 <div className={styles.order__address_user_infos}>
                   <img src={orderData.user.image} />

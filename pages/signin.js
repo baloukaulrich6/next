@@ -30,7 +30,7 @@ const initialValues = {
   login_error: "",
 };
 
-export default function signin({country, providers, callbackUrl, csrfToken }) {
+export default function Signin({country, providers, callbackUrl, csrfToken }) {
   const [user, setUser] = useState(initialValues);
   const [loading, setLoading] = useState(false);
   const {
@@ -130,7 +130,7 @@ export default function signin({country, providers, callbackUrl, csrfToken }) {
               <BiLeftArrowAlt />
             </div>
             <span>
-              We'd be happy to join us <Link href="/">Go Store</Link>
+              We&rsquo;d be happy to join us <Link href="/">Go Store</Link>
             </span>
           </div>
           <div className={styles.login__form}>

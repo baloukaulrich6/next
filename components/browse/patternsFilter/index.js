@@ -24,7 +24,8 @@ export default function PatternsFilter({
           {patterns.map((pattern, i) => {
 
             return (
-              <div className={styles.filter__sizes_size}>
+              <div className={styles.filter__sizes_size}
+              key={i}>
                 <input
                   type="checkbox"
                   name="pattern"

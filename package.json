@@ -80,6 +80,8 @@
   },
   "devDependencies": {
     "eslint": "8.20.0",
-    "eslint-config-next": "12.2.3"
+    "eslint-config-next": "12.2.3",
+    "webpack": "^5.88.1",
+    "webpack-cli": "^5.1.4"
   }
 }

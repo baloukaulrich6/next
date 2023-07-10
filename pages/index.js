@@ -83,9 +83,12 @@ export async function getServerSideProps(){
 return{
   props:{
     products: JSON.parse(JSON.stringify(products)),
-    country: {name: data.name, flag: data.flag.emojitwo},
+    country: {
+      name: "Cameroun",
+      flag: "https://cdn.ipregistry.co/flags/emojitwo/cm.svg",
+    },
   },
-};
+}; 
 
 }
 

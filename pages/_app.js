@@ -17,7 +17,7 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
       <meta 
         name="description" 
         content="Bleasy-online shopping service initial-scale"/>
-      <link rel= 'icon' href='/favicon.png'/>
+      <link rel= 'icon' href='../public/favicon.png'/>
    </Head>
    <SessionProvider session={session}>
      <Provider store={store}>

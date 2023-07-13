@@ -16,10 +16,10 @@ import { BsHeart } from 'react-icons/bs'
 import { userSwiperArray } from '../../../data/home'
 export default function User() {
     const {data: session} = useSession()
-  return (
+  return ( 
     <div className={styles.user}>
               <img
-        src="../../../images/userHeader.jpg"
+        src="../../../images/userheader.jpg"
         alt=""
         className={styles.user__header}
       />
@@ -100,7 +100,7 @@ export default function User() {
         </div>
       </div>
       <img
-        src="../../../images/userHeader.jpg"
+        src="../../../images/userheader.jpg"
         alt=""
         className={styles.user__footer}
       />

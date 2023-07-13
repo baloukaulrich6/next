@@ -389,7 +389,7 @@ export default function EnhancedTable({rows}){
                         </TableCell>
                         <TableCell align="right">{row.name}</TableCell>
                         <TableCell align="right">{row.email}</TableCell>
-                        <TableCell align="right">{row.verified == "true" ?
+                        <TableCell align="right">{row.emailVerified == "true" ?
                        ( <img src="../../../images/verified.png" alt='' className={styles.ver}/> ) : (
                        <img src="../../../images/unverified.png" alt=''className={styles.ver}/>) }</TableCell>
                         <TableCell align="right">{row.role == "admin" ?

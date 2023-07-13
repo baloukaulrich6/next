@@ -191,7 +191,7 @@ export default function Signin({country, providers, callbackUrl, csrfToken }) {
                         className={styles.social__btn}
                         onClick={() => signIn(provider.id)}
                       >
-                        <img src={`../../icons/${provider.name}.png`} />
+                        <img src={`../../icons/${provider.name} .png`} />
                         Sign in with{provider.name}
                       </button>
                     </div>
@@ -283,6 +283,6 @@ export async function getServerSideProps(context) {
   const csrfToken = await getCsrfToken(context);
   const providers = Object.values(await getProviders());
   return {
-    props: { providers },
+    props: { providers, csrfToken },
   };
 }

@@ -69,13 +69,13 @@ export default function Dashboard({ users, orders, products }) {
                 <GiTakeMyMoney />
               </div>
               <div className={styles.card__infos}>
-                <h4>+{orders.reduce((a, val) => a + val.total, 2)}$</h4>
+                <h4>+{orders.reduce((a, val) => a + val.total, 0).toFixed(2)}XFA</h4>
                 <h5>
                   -
                   {orders
                     .filter((o) => !o.isPaid)
-                    .reduce((a, val) => a + val.total, 2)}
-                  $ Unpaid yet.
+                    .reduce((a, val) => a + val.total, 0).toFixed(2)}
+                  XFA Unpaid yet.
                 </h5>
                 <span>Total Earnings</span>
               </div>

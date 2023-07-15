@@ -14,7 +14,7 @@ import { HiOutlineClipboardList } from 'react-icons/hi'
 import { AiOutlineMessage } from 'react-icons/ai'
 import { BsHeart } from 'react-icons/bs'
 import { userSwiperArray } from '../../../data/home'
-import { useSession, signIn, signOut } from "next-auth/react"
+import { signIn, signOut } from "next-auth/react"
 export default function User() {
     const {data: session} = useSession()
   return ( 
@@ -37,8 +37,8 @@ export default function User() {
               alt=""
             />
             <div className={styles.user__infos_btns}>
-              <button className={styles.btn_outlined} onClick={()=>signIn()}>Register</button>
-              <button className={styles.btn_outlined} onClick={()=>signIn()}>Login</button>
+              <button  onClick={()=>signIn()}>Register</button>
+              <button  onClick={()=>signIn()}>Login</button>
             </div>
           </div>
         )}

@@ -1,10 +1,10 @@
-import { useState } from "react"
-import styles from "./styles.module.scss"
-import Link from "next/link"
-import { BsCart3 } from "react-icons/bs"
-import { RiSearch2Line } from "react-icons/ri"
-import { useSelector } from "react-redux"
-import {useRouter} from "next/router"
+import Link from "next/link";
+import styles from "./styles.module.scss";
+import { RiSearch2Line } from "react-icons/ri";
+import { FaOpencart } from "react-icons/fa";
+import { useSelector } from "react-redux";
+import { useState } from "react";
+import { useRouter } from "next/router";
 
  
 export default function Main({searchHandler}) {
@@ -44,7 +44,7 @@ export default function Main({searchHandler}) {
             </form>
             <Link legacyBehavior href="/cart">
                 <a className={styles.cart}>
-                    <BsCart3/>
+                    <FaOpencart />
                     <span>{cart.length}</span>
                 </a>
             </Link>

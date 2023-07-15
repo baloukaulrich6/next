@@ -13,7 +13,7 @@ export default function All({products}) {
         <ProductCard product={product} key={product._id} />
       ))}
     </Layout>
-  )
+  ) 
 }
 export async function getServerSideProps(prox){
  await db.connectDb()

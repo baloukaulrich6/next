@@ -375,7 +375,7 @@ export default function EnhancedTable({rows}){
                             checked={isItemSelected}
                             inputProps={{
                               'aria-labelledby': labelId,
-                            }}
+                            }} 
                           />
                         </TableCell>
                         <TableCell
